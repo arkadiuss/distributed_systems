@@ -6,16 +6,22 @@ import settings
 from common import *
 import select
 import clients_manager
-
+import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 cl_mngr = clients_manager.ClientsManager()
 
-def send_tcp(from, msg, socket):
-    sender = cl_mngr.find_by_tcp_address(from)
+def send_tcp(from_address, msg):
+    sender = cl_mngr.find_by_tcp_address(from_address)
     for client in cl_mngr.get_clients():
         if client != sender:
-            socket.send(client.tcp_address, encode("{}: {}".format(sender.id, msg))
+            client.tcp_socket.send(encode("{}: {}".format(sender.id, msg)))
+
+def send_udp(from_address, msg):
+    sender = cl_mngr.find_by_udp_address(from_address)
+    for client in cl_mngr.get_clients():
+        if client != sender:
+            client.udp_socket.sendto(encode("{}: {}".format(sender.id, msg)), client.udp_address)
 
 
 def client_thread(tcp_socket):
@@ -23,8 +29,13 @@ def client_thread(tcp_socket):
     address = ('', tcp_socket.getpeername()[1])
     udp_socket.bind(address)
     logging.info('Server is listening for UDP connections from %s', address)
-   
-    cl_mngr.add(tcp_socket.getsockname(), address)
+    tcp_socket.send(encode("Hello TCP"))
+    buff, client_udp_address = udp_socket.recvfrom(1024)
+    if decode(buff) != "Hello UDP":
+        logging.error('Unable to connect by UDP')
+        return
+    logging.info("Hello received, connection established") 
+    cl_mngr.add(tcp_socket, udp_socket, client_udp_address)
 
     epoll = select.epoll()
     epoll.register(tcp_socket.fileno(), select.EPOLLIN)
@@ -37,15 +48,18 @@ def client_thread(tcp_socket):
                     buff = tcp_socket.recv(1024)
                     if len(buff) == 0:
                         logging.info('Connection with s closed') 
-                        break
+                        epoll.unregister(tcp_socket.fileno())
+                        cl_mngr.remove_by_tcp_address(tcp_socket.getpeername())
                     logging.info('Received TCP messsage %s', decode(buff))
-                    send_tcp(tcp_socket.getsockname(), decode(buff), tcp_socket)    
+                    send_tcp(tcp_socket.getpeername(), decode(buff))    
                 elif fileno == udp_socket.fileno() and event & select.EPOLLIN:
                     buff, address = udp_socket.recvfrom(1024)
                     if len(buff) == 0:
                         logging.info('Connection UDP with %s broken', address)
-                        break
+                        epoll.unregister(udp_socket.fileno())
+                        cl_mngr.remove_by_udp_address(address)
                     logging.info('Received UDP message %s', decode(buff))
+                    send_udp(address, decode(buff))
     finally:
         epoll.unregister(tcp_socket.fileno())
         epoll.unregister(udp_socket.fileno())
