@@ -9,6 +9,8 @@ import clients_manager
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
+INIT_MSG = settings.SETTINGS['init_msg']
+INIT_ACK_MSG = settings.SETTINGS['init_ack_msg']
 cl_mngr = clients_manager.ClientsManager()
 
 def send_tcp(from_address, msg):
@@ -19,19 +21,23 @@ def send_tcp(from_address, msg):
 
 def send_udp(from_address, msg):
     sender = cl_mngr.find_by_udp_address(from_address)
+    if msg in ["1", "2", "3", "4"]:
+        with open("asciiart/{}.aa".format(msg), "r") as f:
+            msg = f.read()
     for client in cl_mngr.get_clients():
         if client != sender:
             client.udp_socket.sendto(encode("{}: {}".format(sender.id, msg)), client.udp_address)
 
-
+       # print("Sending multicat")
+       # client.udp_socket.sendto(encode("{}: {}".format(sender.id, msg)), ('224.5.5.1', 6212))
 def client_thread(tcp_socket):
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     address = ('', tcp_socket.getpeername()[1])
     udp_socket.bind(address)
     logging.info('Server is listening for UDP connections from %s', address)
-    tcp_socket.send(encode("Hello TCP"))
+    tcp_socket.send(encode(INIT_MSG))
     buff, client_udp_address = udp_socket.recvfrom(1024)
-    if decode(buff) != "Hello UDP":
+    if decode(buff) != INIT_ACK_MSG:
         logging.error('Unable to connect by UDP')
         return
     logging.info("Hello received, connection established") 
