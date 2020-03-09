@@ -4,5 +4,5 @@ SETTINGS = {
     'init_msg': 'INIT',
     'init_ack_msg': 'INIT_ACK',
     'multicast_address': '224.5.5.1',
-    'multicast_port': 6212
+    'multicast_port': 8123
 }

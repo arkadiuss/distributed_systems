@@ -28,8 +28,6 @@ def send_udp(from_address, msg):
         if client != sender:
             client.udp_socket.sendto(encode("{}: {}".format(sender.id, msg)), client.udp_address)
 
-       # print("Sending multicat")
-       # client.udp_socket.sendto(encode("{}: {}".format(sender.id, msg)), ('224.5.5.1', 6212))
 def client_thread(tcp_socket):
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     address = ('', tcp_socket.getpeername()[1])
