@@ -14,11 +14,11 @@ object Settings {
     private const val MESSAGES_EXCHANGE_AGENCY_QUEUE_PREFIX = "messages_exchange_agency_"
     private const val MESSAGES_EXCHANGE_SUPPLIER_QUEUE_PREFIX = "messages_exchange_supplier_"
 
-    fun getMessageExchangeAgencyQueue(id: Long): String {
+    fun getMessageExchangeAgencyQueue(id: Int): String {
         return "${MESSAGES_EXCHANGE_AGENCY_QUEUE_PREFIX}${id}"
     }
 
-    fun getMessageExchangeSupplerQueue(id: Long): String {
+    fun getMessageExchangeCarrierQueue(id: Int): String {
         return "${MESSAGES_EXCHANGE_SUPPLIER_QUEUE_PREFIX}${id}"
     }
 

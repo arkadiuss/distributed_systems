@@ -22,10 +22,12 @@ class Agency {
     }
 
     private fun setupMessagesQueue() {
-        val messagesQueueName = channel.queueDeclare().queue;
+        val messagesQueueName = channel
+                .queueDeclare(Settings.getMessageExchangeAgencyQueue(id), false, false, false, null).queue;
         channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "agency.${id}")
         channel.basicConsume(messagesQueueName, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
+                println("DELICERETE")
                 body?.let { handleMessage(String(it)) }
             }
         })
@@ -42,7 +44,7 @@ class Agency {
     }
 
     private fun handleMessage(message: String) {
-        println("Handling message: $message")
+        println("Received message: $message")
     }
 
     private fun handleConfirmation(message: String) {
@@ -65,7 +67,7 @@ class Agency {
             val commandNo = readLine()?.toInt() ?: continue
             val command = Settings.SERVICES[commandNo];
             val jobId = nextJobId();
-            val key = "services.${command}";
+            val key = "service.${command}";
             channel.basicPublish(Settings.SERVICES_EXCHANGE, key, null, byteArrayOf(jobId.toByte()))
         }
     }
