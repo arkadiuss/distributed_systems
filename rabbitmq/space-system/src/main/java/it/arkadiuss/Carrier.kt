@@ -23,9 +23,10 @@ class Carrier {
 
     private fun setupMessagesQueue() {
         val messagesQueueName = channel
-                .queueDeclare(Settings.getMessageExchangeCarrierQueue(id), false, false, false, null).queue;
-        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "carrier.${id}")
-        channel.basicConsume(messagesQueueName, object : DefaultConsumer(channel) {
+                .queueDeclare(Settings.getMessageExchangeCarrierQueue(id), false, false, false, null).queue
+        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "carrier")
+        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "all")
+        channel.basicConsume(messagesQueueName, true, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
                 body?.let { handleMessage(String(it)) }
             }
@@ -36,36 +37,42 @@ class Carrier {
         val serviceQueueName = channel
                 .queueDeclare(Settings.SERVICES_EXCHANGE_SERVICES_QUEUES[serviceId], false, false, false, null).queue
         channel.queueBind(serviceQueueName, Settings.SERVICES_EXCHANGE, "service.${Settings.SERVICES[serviceId]}")
-        channel.basicConsume(serviceQueueName, object : DefaultConsumer(channel) {
+        channel.basicConsume(serviceQueueName, true, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
-                body?.let { handleService(serviceId, String(it)) }
+                body?.let { handleService(serviceId, it) }
             }
         })
     }
 
     private fun handleMessage(msg: String) {
-        println("Received message: $msg")
+        log("Oo admin! Good to know that you are still here. Received message: $msg")
     }
 
-    private fun handleService(serviceId: Int, msg: String) {
-        println("Handling service $serviceId with msg $msg")
+    private fun handleService(serviceId: Int, msg: ByteArray) {
+        val jobId = msg[0].toInt()
+        val senderId = msg[1].toInt()
+        log("Wooohooo! I have a job! Handling service $serviceId with jobId $jobId from $senderId")
+        log("That was easy! Service finished, sending confirmation...")
+        channel.basicPublish(Settings.SERVICES_EXCHANGE, "agency.$senderId", null, byteArrayOf(jobId.toByte(), id.toByte()))
+        log("Confirmation sent. All done! Hope to see you soon $senderId!")
     }
 
     private fun run() {
         channel = createChannel()
         setupExchanges()
-        println("Id")
+        println("Can you please assign me an id? Please make it unique!")
         id = readLine()?.toInt() ?: return
 
-        println("Service 1 id")
+        setupMessagesQueue()
+
+        println("What first service do you want me to take care of? (0-2)")
         var serviceId = readLine()?.toInt() ?: return
         setupServicesQueue(serviceId)
 
-        println("Service 2 id")
+        println("What second service do you want me to take care of? (0-2)")
         serviceId = readLine()?.toInt() ?: return
         setupServicesQueue(serviceId)
 
-        setupMessagesQueue()
     }
 
     companion object {

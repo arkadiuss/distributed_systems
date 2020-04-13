@@ -20,9 +20,9 @@ class Admin {
     private fun setupCaptureQueue() {
         val captureQueueName = channel.queueDeclare().queue
         channel.queueBind(captureQueueName, Settings.SERVICES_EXCHANGE, "*.*")
-        channel.basicConsume(captureQueueName, object : DefaultConsumer(channel) {
+        channel.basicConsume(captureQueueName, true, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
-                body?.let { handleCapturedMessage(String(it)) }
+                body?.let { handleCapturedMessage(it) }
             }
         })
     }
@@ -35,15 +35,15 @@ class Admin {
         loop@ while(true) {
             println("Mode:\n 1 - agencies \n 2 - carriers \n 3 - all")
             val command = readLine()?.split(" ") ?: listOf<String>()
-            if (command.size?:0 < 2) {
+            if (command.size < 2) {
                 println("Incomplete command")
                 continue;
             }
 
             val dest = when(command[0]) {
-                "1" -> "agency.1"
-                "2" -> "carrier.*"
-                "3" -> "*.*"
+                "1" -> "agency"
+                "2" -> "carrier"
+                "3" -> "all"
                 else -> continue@loop
             }
 
@@ -51,8 +51,8 @@ class Admin {
         }
     }
 
-    private fun handleCapturedMessage(message: String) {
-        println("Captured message: $message")
+    private fun handleCapturedMessage(message: ByteArray) {
+        log("I'm a bad guy that listens every message. Here is the next one ${message.map { it.toInt() }}")
     }
 
     companion object {

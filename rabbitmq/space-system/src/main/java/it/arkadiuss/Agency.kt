@@ -23,39 +23,42 @@ class Agency {
 
     private fun setupMessagesQueue() {
         val messagesQueueName = channel
-                .queueDeclare(Settings.getMessageExchangeAgencyQueue(id), false, false, false, null).queue;
-        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "agency.${id}")
-        channel.basicConsume(messagesQueueName, object : DefaultConsumer(channel) {
+                .queueDeclare(Settings.getMessageExchangeAgencyQueue(id), false, false, false, null).queue
+        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "agency")
+        channel.queueBind(messagesQueueName, Settings.MESSAGES_EXCHANGE, "all")
+        channel.basicConsume(messagesQueueName, true, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
-                println("DELICERETE")
                 body?.let { handleMessage(String(it)) }
             }
         })
     }
 
     private fun setupConfirmationQueue() {
-        val confirmationQueueName = channel.queueDeclare(Settings.SERVICES_EXCHANGE_AGENCY_QUEUE, false, false, false, null).queue
+        val confirmationQueueName = channel.queueDeclare(Settings.getServiceExchangeAgencyQueue(id), false, false, false, null).queue
         channel.queueBind(confirmationQueueName, Settings.SERVICES_EXCHANGE, "agency.${id}")
-        channel.basicConsume(confirmationQueueName, object : DefaultConsumer(channel) {
+        channel.basicConsume(confirmationQueueName, true, object : DefaultConsumer(channel) {
             override fun handleDelivery(consumerTag: String?, envelope: Envelope?, properties: AMQP.BasicProperties?, body: ByteArray?) {
-                body?.let { handleConfirmation(String(it)) }
+                body?.let { handleConfirmation(it) }
             }
         })
     }
 
     private fun handleMessage(message: String) {
-        println("Received message: $message")
+        log("Hey man! Yes, I listen. Admin's message: $message")
     }
 
-    private fun handleConfirmation(message: String) {
-        println("Received confirmation: $message")
+    private fun handleConfirmation(message: ByteArray) {
+        val jobId = message[0].toInt()
+        val carrierId = message[1].toInt()
+        log("Received confirmation for $jobId. Handled by $carrierId. Cool! Thank $carrierId!")
     }
 
     private fun nextJobId(): Int {
-        return id*100+(lastJobId++)
+        return id*20+(lastJobId++)
     }
 
     fun run() {
+        println("Give me some id please. Remember to make it unique!")
         id = readLine()?.toInt() ?: return
         channel = createChannel()
 
@@ -64,11 +67,12 @@ class Agency {
         setupConfirmationQueue()
 
         while(true) {
+            println("What service I need this time? \n 0 - people_transport, 1 - cargo_transport, 2 - satellite_setup")
             val commandNo = readLine()?.toInt() ?: continue
             val command = Settings.SERVICES[commandNo];
             val jobId = nextJobId();
-            val key = "service.${command}";
-            channel.basicPublish(Settings.SERVICES_EXCHANGE, key, null, byteArrayOf(jobId.toByte()))
+            val key = "service.${command}"
+            channel.basicPublish(Settings.SERVICES_EXCHANGE, key, null, byteArrayOf(jobId.toByte(), id.toByte()))
         }
     }
 
