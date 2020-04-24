@@ -1,0 +1,13 @@
+syntax='proto3';
+
+service WeatherService {
+  rpc Subscribe (SubscribeRequest) returns (SubscribeReply) {}
+}
+
+message SubscribeRequest {
+  string name = 1;
+}
+
+message SubscribeReply {
+  string message = 1;
+}
