@@ -1,6 +1,8 @@
-class WeatherServiceImpl : WeatherServiceGrpcKt.WeatherServiceCoroutineImplBase() {
+import io.grpc.stub.StreamObserver
 
-    override suspend fun subscribe(request: WeatherServiceOuterClass.SubscribeRequest): WeatherServiceOuterClass.SubscribeReply {
-        return super.subscribe(request)
+class WeatherServiceImpl : WeatherServiceGrpc.WeatherServiceImplBase() {
+    override fun subscribe(request: WeatherServiceOuterClass.SubscribeRequest?, responseObserver: StreamObserver<WeatherServiceOuterClass.SubscribeReply>?) {
+        println("extra")
+        super.subscribe(request, responseObserver)
     }
 }

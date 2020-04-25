@@ -1,37 +1,51 @@
 import io.grpc.ServerBuilder
+import java.io.IOException
+import java.util.logging.Logger
 
-class Server private constructor(
-    val port: Int,
-    val server: io.grpc.Server
-) {
+class Server {
+    private val port = 50051
+    private var server: io.grpc.Server? = null
 
-    constructor(port: Int) :
-            this(
-                serverBuilder = ServerBuilder.forPort(port),
-                port = port
-            )
-
-    constructor(
-        serverBuilder: ServerBuilder<*>,
-        port: Int
-    ) : this(
-        port = port,
-        server = serverBuilder.addService(WeatherServiceImpl()).build()
-    )
-
-    fun start() {
-        server.start()
-        println("Server started, listening on $port")
-        /* ... */
+    @Throws(IOException::class)
+    private fun start() {
+        server = ServerBuilder.forPort(port) //				.addService(new CalculatorImpl())
+//				//.addService(new CalculatorImpl())
+//				.addService(new AdvancedCalculatorImpl())
+				.addService(WeatherServiceImpl())
+                .build()
+                .start()
+        logger.info("Server started, listening on $port")
+        Runtime.getRuntime().addShutdownHook(object : Thread() {
+            override fun run() { // Use stderr here since the logger may have been reset by its JVM shutdown hook.
+                System.err.println("*** shutting down gRPC server since JVM is shutting down")
+                this@Server.stop()
+                System.err.println("*** server shut down")
+            }
+        })
     }
 
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            val port = 8980
-            val server = Server(port)
-            server.start()
+    private fun stop() {
+        if (server != null) {
+            server!!.shutdown()
         }
     }
 
+    @Throws(InterruptedException::class)
+    private fun blockUntilShutdown() {
+        if (server != null) {
+            server!!.awaitTermination()
+        }
+    }
+
+    companion object {
+        private val logger = Logger.getLogger(Server::class.java.name)
+
+        @Throws(IOException::class, InterruptedException::class)
+        @JvmStatic
+        fun main(args: Array<String>) {
+            val server = Server()
+            server.start()
+            server.blockUntilShutdown()
+        }
+    }
 }
