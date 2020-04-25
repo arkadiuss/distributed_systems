@@ -16,7 +16,7 @@
 package IotController;
 
 /** @hidden */
-public class _DevicePrxI extends com.zeroc.Ice._ObjectPrxI implements DevicePrx
+public class _RadioPrxI extends com.zeroc.Ice._ObjectPrxI implements RadioPrx
 {
     /** @hidden */
     public static final long serialVersionUID = 0L;

@@ -5,6 +5,6 @@ import Ice
 Ice.updateModule("IotController")
 
 # Modules:
-import Device_ice
+import IotController_ice
 
 # Submodules:

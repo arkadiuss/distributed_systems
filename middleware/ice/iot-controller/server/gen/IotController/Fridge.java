@@ -15,19 +15,17 @@
 
 package IotController;
 
-public interface Device extends com.zeroc.Ice.Object
+public interface Fridge extends Device
 {
-    DeviceInfo getInfo(com.zeroc.Ice.Current current);
-
-    void turnOn(com.zeroc.Ice.Current current);
-
-    void turnOff(com.zeroc.Ice.Current current);
+    void setTemp(double temp, com.zeroc.Ice.Current current)
+        throws ArgumentException;
 
     /** @hidden */
     static final String[] _iceIds =
     {
         "::Ice::Object",
-        "::IotController::Device"
+        "::IotController::Device",
+        "::IotController::Fridge"
     };
 
     @Override
@@ -44,7 +42,7 @@ public interface Device extends com.zeroc.Ice.Object
 
     static String ice_staticId()
     {
-        return "::IotController::Device";
+        return "::IotController::Fridge";
     }
 
     /**
@@ -53,45 +51,17 @@ public interface Device extends com.zeroc.Ice.Object
      * @param inS -
      * @param current -
      * @return -
+     * @throws com.zeroc.Ice.UserException -
     **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_getInfo(Device obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setTemp(Fridge obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+        throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        inS.readEmptyParams();
-        DeviceInfo ret = obj.getInfo(current);
-        com.zeroc.Ice.OutputStream ostr = inS.startWriteParams();
-        DeviceInfo.ice_write(ostr, ret);
-        inS.endWriteParams(ostr);
-        return inS.setResult(ostr);
-    }
-
-    /**
-     * @hidden
-     * @param obj -
-     * @param inS -
-     * @param current -
-     * @return -
-    **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_turnOn(Device obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
-    {
-        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        inS.readEmptyParams();
-        obj.turnOn(current);
-        return inS.setResult(inS.writeEmptyParams());
-    }
-
-    /**
-     * @hidden
-     * @param obj -
-     * @param inS -
-     * @param current -
-     * @return -
-    **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_turnOff(Device obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
-    {
-        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        inS.readEmptyParams();
-        obj.turnOff(current);
+        com.zeroc.Ice.InputStream istr = inS.startReadParams();
+        double iceP_temp;
+        iceP_temp = istr.readDouble();
+        inS.endReadParams();
+        obj.setTemp(iceP_temp, current);
         return inS.setResult(inS.writeEmptyParams());
     }
 
@@ -103,6 +73,7 @@ public interface Device extends com.zeroc.Ice.Object
         "ice_ids",
         "ice_isA",
         "ice_ping",
+        "setTemp",
         "turnOff",
         "turnOn"
     };
@@ -122,7 +93,7 @@ public interface Device extends com.zeroc.Ice.Object
         {
             case 0:
             {
-                return _iceD_getInfo(this, in, current);
+                return Device._iceD_getInfo(this, in, current);
             }
             case 1:
             {
@@ -142,11 +113,15 @@ public interface Device extends com.zeroc.Ice.Object
             }
             case 5:
             {
-                return _iceD_turnOff(this, in, current);
+                return _iceD_setTemp(this, in, current);
             }
             case 6:
             {
-                return _iceD_turnOn(this, in, current);
+                return Device._iceD_turnOff(this, in, current);
+            }
+            case 7:
+            {
+                return Device._iceD_turnOn(this, in, current);
             }
         }
 

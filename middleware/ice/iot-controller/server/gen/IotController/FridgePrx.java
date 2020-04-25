@@ -15,110 +15,62 @@
 
 package IotController;
 
-public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
+public interface FridgePrx extends DevicePrx
 {
-    default DeviceInfo getInfo()
+    default void setTemp(double temp)
+        throws ArgumentException
     {
-        return getInfo(com.zeroc.Ice.ObjectPrx.noExplicitContext);
+        setTemp(temp, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default DeviceInfo getInfo(java.util.Map<String, String> context)
+    default void setTemp(double temp, java.util.Map<String, String> context)
+        throws ArgumentException
     {
-        return _iceI_getInfoAsync(context, true).waitForResponse();
+        try
+        {
+            _iceI_setTempAsync(temp, context, true).waitForResponseOrUserEx();
+        }
+        catch(ArgumentException ex)
+        {
+            throw ex;
+        }
+        catch(com.zeroc.Ice.UserException ex)
+        {
+            throw new com.zeroc.Ice.UnknownUserException(ex.ice_id(), ex);
+        }
     }
 
-    default java.util.concurrent.CompletableFuture<DeviceInfo> getInfoAsync()
+    default java.util.concurrent.CompletableFuture<Void> setTempAsync(double temp)
     {
-        return _iceI_getInfoAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+        return _iceI_setTempAsync(temp, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<DeviceInfo> getInfoAsync(java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> setTempAsync(double temp, java.util.Map<String, String> context)
     {
-        return _iceI_getInfoAsync(context, false);
-    }
-
-    /**
-     * @hidden
-     * @param context -
-     * @param sync -
-     * @return -
-     **/
-    default com.zeroc.IceInternal.OutgoingAsync<DeviceInfo> _iceI_getInfoAsync(java.util.Map<String, String> context, boolean sync)
-    {
-        com.zeroc.IceInternal.OutgoingAsync<DeviceInfo> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "getInfo", null, sync, null);
-        f.invoke(true, context, null, null, istr -> {
-                     DeviceInfo ret;
-                     ret = DeviceInfo.ice_read(istr);
-                     return ret;
-                 });
-        return f;
-    }
-
-    default void turnOn()
-    {
-        turnOn(com.zeroc.Ice.ObjectPrx.noExplicitContext);
-    }
-
-    default void turnOn(java.util.Map<String, String> context)
-    {
-        _iceI_turnOnAsync(context, true).waitForResponse();
-    }
-
-    default java.util.concurrent.CompletableFuture<Void> turnOnAsync()
-    {
-        return _iceI_turnOnAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
-    }
-
-    default java.util.concurrent.CompletableFuture<Void> turnOnAsync(java.util.Map<String, String> context)
-    {
-        return _iceI_turnOnAsync(context, false);
+        return _iceI_setTempAsync(temp, context, false);
     }
 
     /**
      * @hidden
+     * @param iceP_temp -
      * @param context -
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_turnOnAsync(java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_setTempAsync(double iceP_temp, java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "turnOn", null, sync, null);
-        f.invoke(false, context, null, null, null);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "setTemp", null, sync, _iceE_setTemp);
+        f.invoke(true, context, null, ostr -> {
+                     ostr.writeDouble(iceP_temp);
+                 }, null);
         return f;
     }
 
-    default void turnOff()
+    /** @hidden */
+    static final Class<?>[] _iceE_setTemp =
     {
-        turnOff(com.zeroc.Ice.ObjectPrx.noExplicitContext);
-    }
-
-    default void turnOff(java.util.Map<String, String> context)
-    {
-        _iceI_turnOffAsync(context, true).waitForResponse();
-    }
-
-    default java.util.concurrent.CompletableFuture<Void> turnOffAsync()
-    {
-        return _iceI_turnOffAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
-    }
-
-    default java.util.concurrent.CompletableFuture<Void> turnOffAsync(java.util.Map<String, String> context)
-    {
-        return _iceI_turnOffAsync(context, false);
-    }
-
-    /**
-     * @hidden
-     * @param context -
-     * @param sync -
-     * @return -
-     **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_turnOffAsync(java.util.Map<String, String> context, boolean sync)
-    {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "turnOff", null, sync, null);
-        f.invoke(false, context, null, null, null);
-        return f;
-    }
+        ArgumentException.class
+    };
 
     /**
      * Contacts the remote server to verify that the object implements this type.
@@ -126,9 +78,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param obj The untyped proxy.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static DevicePrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
+    static FridgePrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -138,9 +90,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static DevicePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
+    static FridgePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -150,9 +102,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static DevicePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static FridgePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -163,9 +115,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static DevicePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
+    static FridgePrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -173,9 +125,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param obj The untyped proxy.
      * @return A proxy for this type.
      **/
-    static DevicePrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
+    static FridgePrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -184,9 +136,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type.
      **/
-    static DevicePrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static FridgePrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, DevicePrx.class, _DevicePrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, FridgePrx.class, _FridgePrxI.class);
     }
 
     /**
@@ -195,9 +147,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified per-proxy context.
      **/
     @Override
-    default DevicePrx ice_context(java.util.Map<String, String> newContext)
+    default FridgePrx ice_context(java.util.Map<String, String> newContext)
     {
-        return (DevicePrx)_ice_context(newContext);
+        return (FridgePrx)_ice_context(newContext);
     }
 
     /**
@@ -206,9 +158,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified adapter ID.
      **/
     @Override
-    default DevicePrx ice_adapterId(String newAdapterId)
+    default FridgePrx ice_adapterId(String newAdapterId)
     {
-        return (DevicePrx)_ice_adapterId(newAdapterId);
+        return (FridgePrx)_ice_adapterId(newAdapterId);
     }
 
     /**
@@ -217,9 +169,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified endpoints.
      **/
     @Override
-    default DevicePrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
+    default FridgePrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
     {
-        return (DevicePrx)_ice_endpoints(newEndpoints);
+        return (FridgePrx)_ice_endpoints(newEndpoints);
     }
 
     /**
@@ -228,9 +180,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified locator cache timeout.
      **/
     @Override
-    default DevicePrx ice_locatorCacheTimeout(int newTimeout)
+    default FridgePrx ice_locatorCacheTimeout(int newTimeout)
     {
-        return (DevicePrx)_ice_locatorCacheTimeout(newTimeout);
+        return (FridgePrx)_ice_locatorCacheTimeout(newTimeout);
     }
 
     /**
@@ -239,9 +191,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified invocation timeout.
      **/
     @Override
-    default DevicePrx ice_invocationTimeout(int newTimeout)
+    default FridgePrx ice_invocationTimeout(int newTimeout)
     {
-        return (DevicePrx)_ice_invocationTimeout(newTimeout);
+        return (FridgePrx)_ice_invocationTimeout(newTimeout);
     }
 
     /**
@@ -250,9 +202,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified caching policy.
      **/
     @Override
-    default DevicePrx ice_connectionCached(boolean newCache)
+    default FridgePrx ice_connectionCached(boolean newCache)
     {
-        return (DevicePrx)_ice_connectionCached(newCache);
+        return (FridgePrx)_ice_connectionCached(newCache);
     }
 
     /**
@@ -261,9 +213,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified endpoint selection policy.
      **/
     @Override
-    default DevicePrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
+    default FridgePrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
     {
-        return (DevicePrx)_ice_endpointSelection(newType);
+        return (FridgePrx)_ice_endpointSelection(newType);
     }
 
     /**
@@ -274,9 +226,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default DevicePrx ice_secure(boolean b)
+    default FridgePrx ice_secure(boolean b)
     {
-        return (DevicePrx)_ice_secure(b);
+        return (FridgePrx)_ice_secure(b);
     }
 
     /**
@@ -285,9 +237,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified encoding version.
      **/
     @Override
-    default DevicePrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
+    default FridgePrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
     {
-        return (DevicePrx)_ice_encodingVersion(e);
+        return (FridgePrx)_ice_encodingVersion(e);
     }
 
     /**
@@ -298,9 +250,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default DevicePrx ice_preferSecure(boolean b)
+    default FridgePrx ice_preferSecure(boolean b)
     {
-        return (DevicePrx)_ice_preferSecure(b);
+        return (FridgePrx)_ice_preferSecure(b);
     }
 
     /**
@@ -309,9 +261,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified router.
      **/
     @Override
-    default DevicePrx ice_router(com.zeroc.Ice.RouterPrx router)
+    default FridgePrx ice_router(com.zeroc.Ice.RouterPrx router)
     {
-        return (DevicePrx)_ice_router(router);
+        return (FridgePrx)_ice_router(router);
     }
 
     /**
@@ -320,9 +272,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified locator.
      **/
     @Override
-    default DevicePrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
+    default FridgePrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
     {
-        return (DevicePrx)_ice_locator(locator);
+        return (FridgePrx)_ice_locator(locator);
     }
 
     /**
@@ -331,9 +283,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified collocation optimization.
      **/
     @Override
-    default DevicePrx ice_collocationOptimized(boolean b)
+    default FridgePrx ice_collocationOptimized(boolean b)
     {
-        return (DevicePrx)_ice_collocationOptimized(b);
+        return (FridgePrx)_ice_collocationOptimized(b);
     }
 
     /**
@@ -341,9 +293,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses twoway invocations.
      **/
     @Override
-    default DevicePrx ice_twoway()
+    default FridgePrx ice_twoway()
     {
-        return (DevicePrx)_ice_twoway();
+        return (FridgePrx)_ice_twoway();
     }
 
     /**
@@ -351,9 +303,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses oneway invocations.
      **/
     @Override
-    default DevicePrx ice_oneway()
+    default FridgePrx ice_oneway()
     {
-        return (DevicePrx)_ice_oneway();
+        return (FridgePrx)_ice_oneway();
     }
 
     /**
@@ -361,9 +313,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses batch oneway invocations.
      **/
     @Override
-    default DevicePrx ice_batchOneway()
+    default FridgePrx ice_batchOneway()
     {
-        return (DevicePrx)_ice_batchOneway();
+        return (FridgePrx)_ice_batchOneway();
     }
 
     /**
@@ -371,9 +323,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses datagram invocations.
      **/
     @Override
-    default DevicePrx ice_datagram()
+    default FridgePrx ice_datagram()
     {
-        return (DevicePrx)_ice_datagram();
+        return (FridgePrx)_ice_datagram();
     }
 
     /**
@@ -381,9 +333,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy that uses batch datagram invocations.
      **/
     @Override
-    default DevicePrx ice_batchDatagram()
+    default FridgePrx ice_batchDatagram()
     {
-        return (DevicePrx)_ice_batchDatagram();
+        return (FridgePrx)_ice_batchDatagram();
     }
 
     /**
@@ -392,9 +344,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified compression setting.
      **/
     @Override
-    default DevicePrx ice_compress(boolean co)
+    default FridgePrx ice_compress(boolean co)
     {
-        return (DevicePrx)_ice_compress(co);
+        return (FridgePrx)_ice_compress(co);
     }
 
     /**
@@ -403,9 +355,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified timeout.
      **/
     @Override
-    default DevicePrx ice_timeout(int t)
+    default FridgePrx ice_timeout(int t)
     {
-        return (DevicePrx)_ice_timeout(t);
+        return (FridgePrx)_ice_timeout(t);
     }
 
     /**
@@ -414,9 +366,9 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A proxy with the specified connection ID.
      **/
     @Override
-    default DevicePrx ice_connectionId(String connectionId)
+    default FridgePrx ice_connectionId(String connectionId)
     {
-        return (DevicePrx)_ice_connectionId(connectionId);
+        return (FridgePrx)_ice_connectionId(connectionId);
     }
 
     /**
@@ -425,13 +377,13 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
      * @return A fixed proxy bound to the given connection.
      **/
     @Override
-    default DevicePrx ice_fixed(com.zeroc.Ice.Connection connection)
+    default FridgePrx ice_fixed(com.zeroc.Ice.Connection connection)
     {
-        return (DevicePrx)_ice_fixed(connection);
+        return (FridgePrx)_ice_fixed(connection);
     }
 
     static String ice_staticId()
     {
-        return "::IotController::Device";
+        return "::IotController::Fridge";
     }
 }

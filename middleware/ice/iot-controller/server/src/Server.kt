@@ -1,3 +1,5 @@
+import IotController.DeviceInfo
+import IotController.DeviceState
 import com.zeroc.Ice.Identity
 import com.zeroc.Ice.Util
 
@@ -6,8 +8,8 @@ class Server {
     fun start(args: Array<String>) {
         Util.initialize(args).use {
             val adapter = it.createObjectAdapter("IotAdapter")
-            var device = DeviceI()
-            adapter.add(device, Identity("device", "devices"))
+
+            adapter.addServantLocator(DevicesLocator(), "devices")
             adapter.activate()
 
             println("Activated")

@@ -16,7 +16,7 @@
 package IotController;
 
 /** @hidden */
-public class _DevicePrxI extends com.zeroc.Ice._ObjectPrxI implements DevicePrx
+public class _FridgePrxI extends com.zeroc.Ice._ObjectPrxI implements FridgePrx
 {
     /** @hidden */
     public static final long serialVersionUID = 0L;
