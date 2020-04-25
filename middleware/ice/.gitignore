@@ -1,0 +1,7 @@
+.idea/
+*.iml
+out/
+*.rpm
+*.zip
+__pycache__/
+venv/
