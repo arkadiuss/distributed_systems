@@ -5,6 +5,7 @@ import (
 	"context"
 	"google.golang.org/grpc"
 	"log"
+	"time"
 )
 
 func main() {
@@ -25,8 +26,14 @@ func main() {
 	for {
 		notification, err := stream.Recv()
 		if err != nil {
-			log.Fatalf("fail to recv: %v", err)
+			log.Printf("fail to recv: %v", err)
+			time.Sleep(100 * time.Millisecond)
+			newstream, err := client.Subscribe(ctx, &ws.SubscribeRequest{City:"test"})
+			if err == nil {
+				stream = newstream
+			}
+		} else {
+			log.Printf("received message: %v \n", notification.Message)
 		}
-		log.Printf("received message: %v \n", notification.Message)
 	}
 }

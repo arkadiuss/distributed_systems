@@ -1,6 +1,3 @@
-import IotController.DeviceInfo
-import IotController.DeviceState
-import com.zeroc.Ice.Identity
 import com.zeroc.Ice.Util
 
 class Server {
