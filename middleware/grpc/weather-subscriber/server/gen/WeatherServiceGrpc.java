@@ -26,28 +26,28 @@ public final class WeatherServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<WeatherServiceOuterClass.SubscribeRequest,
-      WeatherServiceOuterClass.SubscribeReply> getSubscribeMethod;
+      WeatherServiceOuterClass.Notification> getSubscribeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Subscribe",
       requestType = WeatherServiceOuterClass.SubscribeRequest.class,
-      responseType = WeatherServiceOuterClass.SubscribeReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      responseType = WeatherServiceOuterClass.Notification.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<WeatherServiceOuterClass.SubscribeRequest,
-      WeatherServiceOuterClass.SubscribeReply> getSubscribeMethod() {
-    io.grpc.MethodDescriptor<WeatherServiceOuterClass.SubscribeRequest, WeatherServiceOuterClass.SubscribeReply> getSubscribeMethod;
+      WeatherServiceOuterClass.Notification> getSubscribeMethod() {
+    io.grpc.MethodDescriptor<WeatherServiceOuterClass.SubscribeRequest, WeatherServiceOuterClass.Notification> getSubscribeMethod;
     if ((getSubscribeMethod = WeatherServiceGrpc.getSubscribeMethod) == null) {
       synchronized (WeatherServiceGrpc.class) {
         if ((getSubscribeMethod = WeatherServiceGrpc.getSubscribeMethod) == null) {
           WeatherServiceGrpc.getSubscribeMethod = getSubscribeMethod =
-              io.grpc.MethodDescriptor.<WeatherServiceOuterClass.SubscribeRequest, WeatherServiceOuterClass.SubscribeReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              io.grpc.MethodDescriptor.<WeatherServiceOuterClass.SubscribeRequest, WeatherServiceOuterClass.Notification>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Subscribe"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   WeatherServiceOuterClass.SubscribeRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  WeatherServiceOuterClass.SubscribeReply.getDefaultInstance()))
+                  WeatherServiceOuterClass.Notification.getDefaultInstance()))
               .setSchemaDescriptor(new WeatherServiceMethodDescriptorSupplier("Subscribe"))
               .build();
         }
@@ -107,7 +107,7 @@ public final class WeatherServiceGrpc {
     /**
      */
     public void subscribe(WeatherServiceOuterClass.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<WeatherServiceOuterClass.SubscribeReply> responseObserver) {
+        io.grpc.stub.StreamObserver<WeatherServiceOuterClass.Notification> responseObserver) {
       asyncUnimplementedUnaryCall(getSubscribeMethod(), responseObserver);
     }
 
@@ -115,10 +115,10 @@ public final class WeatherServiceGrpc {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getSubscribeMethod(),
-            asyncUnaryCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 WeatherServiceOuterClass.SubscribeRequest,
-                WeatherServiceOuterClass.SubscribeReply>(
+                WeatherServiceOuterClass.Notification>(
                   this, METHODID_SUBSCRIBE)))
           .build();
     }
@@ -141,8 +141,8 @@ public final class WeatherServiceGrpc {
     /**
      */
     public void subscribe(WeatherServiceOuterClass.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<WeatherServiceOuterClass.SubscribeReply> responseObserver) {
-      asyncUnaryCall(
+        io.grpc.stub.StreamObserver<WeatherServiceOuterClass.Notification> responseObserver) {
+      asyncServerStreamingCall(
           getChannel().newCall(getSubscribeMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -163,8 +163,9 @@ public final class WeatherServiceGrpc {
 
     /**
      */
-    public WeatherServiceOuterClass.SubscribeReply subscribe(WeatherServiceOuterClass.SubscribeRequest request) {
-      return blockingUnaryCall(
+    public java.util.Iterator<WeatherServiceOuterClass.Notification> subscribe(
+        WeatherServiceOuterClass.SubscribeRequest request) {
+      return blockingServerStreamingCall(
           getChannel(), getSubscribeMethod(), getCallOptions(), request);
     }
   }
@@ -181,14 +182,6 @@ public final class WeatherServiceGrpc {
     protected WeatherServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new WeatherServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<WeatherServiceOuterClass.SubscribeReply> subscribe(
-        WeatherServiceOuterClass.SubscribeRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getSubscribeMethod(), getCallOptions()), request);
     }
   }
 
@@ -213,7 +206,7 @@ public final class WeatherServiceGrpc {
       switch (methodId) {
         case METHODID_SUBSCRIBE:
           serviceImpl.subscribe((WeatherServiceOuterClass.SubscribeRequest) request,
-              (io.grpc.stub.StreamObserver<WeatherServiceOuterClass.SubscribeReply>) responseObserver);
+              (io.grpc.stub.StreamObserver<WeatherServiceOuterClass.Notification>) responseObserver);
           break;
         default:
           throw new AssertionError();

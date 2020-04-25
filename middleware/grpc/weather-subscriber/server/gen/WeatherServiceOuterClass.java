@@ -17,16 +17,16 @@ public final class WeatherServiceOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
+     * <code>string city = 1;</code>
+     * @return The city.
      */
-    java.lang.String getName();
+    java.lang.String getCity();
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * <code>string city = 1;</code>
+     * @return The bytes for city.
      */
     com.google.protobuf.ByteString
-        getNameBytes();
+        getCityBytes();
   }
   /**
    * Protobuf type {@code SubscribeRequest}
@@ -41,7 +41,7 @@ public final class WeatherServiceOuterClass {
       super(builder);
     }
     private SubscribeRequest() {
-      name_ = "";
+      city_ = "";
     }
 
     @java.lang.Override
@@ -77,7 +77,7 @@ public final class WeatherServiceOuterClass {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              name_ = s;
+              city_ = s;
               break;
             }
             default: {
@@ -112,36 +112,36 @@ public final class WeatherServiceOuterClass {
               WeatherServiceOuterClass.SubscribeRequest.class, WeatherServiceOuterClass.SubscribeRequest.Builder.class);
     }
 
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
+    public static final int CITY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object city_;
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
+     * <code>string city = 1;</code>
+     * @return The city.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getCity() {
+      java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        city_ = s;
         return s;
       }
     }
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * <code>string city = 1;</code>
+     * @return The bytes for city.
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getCityBytes() {
+      java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        city_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -162,8 +162,8 @@ public final class WeatherServiceOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      if (!getCityBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, city_);
       }
       unknownFields.writeTo(output);
     }
@@ -174,8 +174,8 @@ public final class WeatherServiceOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      if (!getCityBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, city_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -192,8 +192,8 @@ public final class WeatherServiceOuterClass {
       }
       WeatherServiceOuterClass.SubscribeRequest other = (WeatherServiceOuterClass.SubscribeRequest) obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
+      if (!getCity()
+          .equals(other.getCity())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -205,8 +205,8 @@ public final class WeatherServiceOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + CITY_FIELD_NUMBER;
+      hash = (53 * hash) + getCity().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -340,7 +340,7 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        name_ = "";
+        city_ = "";
 
         return this;
       }
@@ -368,7 +368,7 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public WeatherServiceOuterClass.SubscribeRequest buildPartial() {
         WeatherServiceOuterClass.SubscribeRequest result = new WeatherServiceOuterClass.SubscribeRequest(this);
-        result.name_ = name_;
+        result.city_ = city_;
         onBuilt();
         return result;
       }
@@ -417,8 +417,8 @@ public final class WeatherServiceOuterClass {
 
       public Builder mergeFrom(WeatherServiceOuterClass.SubscribeRequest other) {
         if (other == WeatherServiceOuterClass.SubscribeRequest.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
+        if (!other.getCity().isEmpty()) {
+          city_ = other.city_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -450,78 +450,78 @@ public final class WeatherServiceOuterClass {
         return this;
       }
 
-      private java.lang.Object name_ = "";
+      private java.lang.Object city_ = "";
       /**
-       * <code>string name = 1;</code>
-       * @return The name.
+       * <code>string city = 1;</code>
+       * @return The city.
        */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
+      public java.lang.String getCity() {
+        java.lang.Object ref = city_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          name_ = s;
+          city_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string name = 1;</code>
-       * @return The bytes for name.
+       * <code>string city = 1;</code>
+       * @return The bytes for city.
        */
       public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
+          getCityBytes() {
+        java.lang.Object ref = city_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          name_ = b;
+          city_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string name = 1;</code>
-       * @param value The name to set.
+       * <code>string city = 1;</code>
+       * @param value The city to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
+      public Builder setCity(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        name_ = value;
+        city_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>string city = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearName() {
+      public Builder clearCity() {
         
-        name_ = getDefaultInstance().getName();
+        city_ = getDefaultInstance().getCity();
         onChanged();
         return this;
       }
       /**
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
+       * <code>string city = 1;</code>
+       * @param value The bytes for city to set.
        * @return This builder for chaining.
        */
-      public Builder setNameBytes(
+      public Builder setCityBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        name_ = value;
+        city_ = value;
         onChanged();
         return this;
       }
@@ -578,8 +578,8 @@ public final class WeatherServiceOuterClass {
 
   }
 
-  public interface SubscribeReplyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SubscribeReply)
+  public interface NotificationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Notification)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -595,18 +595,18 @@ public final class WeatherServiceOuterClass {
         getMessageBytes();
   }
   /**
-   * Protobuf type {@code SubscribeReply}
+   * Protobuf type {@code Notification}
    */
-  public  static final class SubscribeReply extends
+  public  static final class Notification extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SubscribeReply)
-      SubscribeReplyOrBuilder {
+      // @@protoc_insertion_point(message_implements:Notification)
+      NotificationOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SubscribeReply.newBuilder() to construct.
-    private SubscribeReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Notification.newBuilder() to construct.
+    private Notification(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SubscribeReply() {
+    private Notification() {
       message_ = "";
     }
 
@@ -614,7 +614,7 @@ public final class WeatherServiceOuterClass {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SubscribeReply();
+      return new Notification();
     }
 
     @java.lang.Override
@@ -622,7 +622,7 @@ public final class WeatherServiceOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SubscribeReply(
+    private Notification(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -667,15 +667,15 @@ public final class WeatherServiceOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return WeatherServiceOuterClass.internal_static_SubscribeReply_descriptor;
+      return WeatherServiceOuterClass.internal_static_Notification_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return WeatherServiceOuterClass.internal_static_SubscribeReply_fieldAccessorTable
+      return WeatherServiceOuterClass.internal_static_Notification_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              WeatherServiceOuterClass.SubscribeReply.class, WeatherServiceOuterClass.SubscribeReply.Builder.class);
+              WeatherServiceOuterClass.Notification.class, WeatherServiceOuterClass.Notification.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
@@ -753,10 +753,10 @@ public final class WeatherServiceOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof WeatherServiceOuterClass.SubscribeReply)) {
+      if (!(obj instanceof WeatherServiceOuterClass.Notification)) {
         return super.equals(obj);
       }
-      WeatherServiceOuterClass.SubscribeReply other = (WeatherServiceOuterClass.SubscribeReply) obj;
+      WeatherServiceOuterClass.Notification other = (WeatherServiceOuterClass.Notification) obj;
 
       if (!getMessage()
           .equals(other.getMessage())) return false;
@@ -778,69 +778,69 @@ public final class WeatherServiceOuterClass {
       return hash;
     }
 
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(byte[] data)
+    public static WeatherServiceOuterClass.Notification parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(java.io.InputStream input)
+    public static WeatherServiceOuterClass.Notification parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseDelimitedFrom(java.io.InputStream input)
+    public static WeatherServiceOuterClass.Notification parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseDelimitedFrom(
+    public static WeatherServiceOuterClass.Notification parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static WeatherServiceOuterClass.SubscribeReply parseFrom(
+    public static WeatherServiceOuterClass.Notification parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -853,7 +853,7 @@ public final class WeatherServiceOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(WeatherServiceOuterClass.SubscribeReply prototype) {
+    public static Builder newBuilder(WeatherServiceOuterClass.Notification prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -869,26 +869,26 @@ public final class WeatherServiceOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code SubscribeReply}
+     * Protobuf type {@code Notification}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SubscribeReply)
-        WeatherServiceOuterClass.SubscribeReplyOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Notification)
+        WeatherServiceOuterClass.NotificationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return WeatherServiceOuterClass.internal_static_SubscribeReply_descriptor;
+        return WeatherServiceOuterClass.internal_static_Notification_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return WeatherServiceOuterClass.internal_static_SubscribeReply_fieldAccessorTable
+        return WeatherServiceOuterClass.internal_static_Notification_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                WeatherServiceOuterClass.SubscribeReply.class, WeatherServiceOuterClass.SubscribeReply.Builder.class);
+                WeatherServiceOuterClass.Notification.class, WeatherServiceOuterClass.Notification.Builder.class);
       }
 
-      // Construct using WeatherServiceOuterClass.SubscribeReply.newBuilder()
+      // Construct using WeatherServiceOuterClass.Notification.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -914,17 +914,17 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return WeatherServiceOuterClass.internal_static_SubscribeReply_descriptor;
+        return WeatherServiceOuterClass.internal_static_Notification_descriptor;
       }
 
       @java.lang.Override
-      public WeatherServiceOuterClass.SubscribeReply getDefaultInstanceForType() {
-        return WeatherServiceOuterClass.SubscribeReply.getDefaultInstance();
+      public WeatherServiceOuterClass.Notification getDefaultInstanceForType() {
+        return WeatherServiceOuterClass.Notification.getDefaultInstance();
       }
 
       @java.lang.Override
-      public WeatherServiceOuterClass.SubscribeReply build() {
-        WeatherServiceOuterClass.SubscribeReply result = buildPartial();
+      public WeatherServiceOuterClass.Notification build() {
+        WeatherServiceOuterClass.Notification result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -932,8 +932,8 @@ public final class WeatherServiceOuterClass {
       }
 
       @java.lang.Override
-      public WeatherServiceOuterClass.SubscribeReply buildPartial() {
-        WeatherServiceOuterClass.SubscribeReply result = new WeatherServiceOuterClass.SubscribeReply(this);
+      public WeatherServiceOuterClass.Notification buildPartial() {
+        WeatherServiceOuterClass.Notification result = new WeatherServiceOuterClass.Notification(this);
         result.message_ = message_;
         onBuilt();
         return result;
@@ -973,16 +973,16 @@ public final class WeatherServiceOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof WeatherServiceOuterClass.SubscribeReply) {
-          return mergeFrom((WeatherServiceOuterClass.SubscribeReply)other);
+        if (other instanceof WeatherServiceOuterClass.Notification) {
+          return mergeFrom((WeatherServiceOuterClass.Notification)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(WeatherServiceOuterClass.SubscribeReply other) {
-        if (other == WeatherServiceOuterClass.SubscribeReply.getDefaultInstance()) return this;
+      public Builder mergeFrom(WeatherServiceOuterClass.Notification other) {
+        if (other == WeatherServiceOuterClass.Notification.getDefaultInstance()) return this;
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
           onChanged();
@@ -1002,11 +1002,11 @@ public final class WeatherServiceOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        WeatherServiceOuterClass.SubscribeReply parsedMessage = null;
+        WeatherServiceOuterClass.Notification parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (WeatherServiceOuterClass.SubscribeReply) e.getUnfinishedMessage();
+          parsedMessage = (WeatherServiceOuterClass.Notification) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1104,41 +1104,41 @@ public final class WeatherServiceOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:SubscribeReply)
+      // @@protoc_insertion_point(builder_scope:Notification)
     }
 
-    // @@protoc_insertion_point(class_scope:SubscribeReply)
-    private static final WeatherServiceOuterClass.SubscribeReply DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:Notification)
+    private static final WeatherServiceOuterClass.Notification DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new WeatherServiceOuterClass.SubscribeReply();
+      DEFAULT_INSTANCE = new WeatherServiceOuterClass.Notification();
     }
 
-    public static WeatherServiceOuterClass.SubscribeReply getDefaultInstance() {
+    public static WeatherServiceOuterClass.Notification getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SubscribeReply>
-        PARSER = new com.google.protobuf.AbstractParser<SubscribeReply>() {
+    private static final com.google.protobuf.Parser<Notification>
+        PARSER = new com.google.protobuf.AbstractParser<Notification>() {
       @java.lang.Override
-      public SubscribeReply parsePartialFrom(
+      public Notification parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SubscribeReply(input, extensionRegistry);
+        return new Notification(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SubscribeReply> parser() {
+    public static com.google.protobuf.Parser<Notification> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SubscribeReply> getParserForType() {
+    public com.google.protobuf.Parser<Notification> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public WeatherServiceOuterClass.SubscribeReply getDefaultInstanceForType() {
+    public WeatherServiceOuterClass.Notification getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1150,10 +1150,10 @@ public final class WeatherServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SubscribeRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SubscribeReply_descriptor;
+    internal_static_Notification_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SubscribeReply_fieldAccessorTable;
+      internal_static_Notification_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1164,10 +1164,10 @@ public final class WeatherServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\025weather-service.proto\" \n\020SubscribeRequ" +
-      "est\022\014\n\004name\030\001 \001(\t\"!\n\016SubscribeReply\022\017\n\007m" +
-      "essage\030\001 \001(\t2C\n\016WeatherService\0221\n\tSubscr" +
-      "ibe\022\021.SubscribeRequest\032\017.SubscribeReply\"" +
-      "\000b\006proto3"
+      "est\022\014\n\004city\030\001 \001(\t\"\037\n\014Notification\022\017\n\007mes" +
+      "sage\030\001 \001(\t2C\n\016WeatherService\0221\n\tSubscrib" +
+      "e\022\021.SubscribeRequest\032\r.Notification\"\0000\001B" +
+      "\025Z\023grpc/weatherserviceb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1178,12 +1178,12 @@ public final class WeatherServiceOuterClass {
     internal_static_SubscribeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SubscribeRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_SubscribeReply_descriptor =
+        new java.lang.String[] { "City", });
+    internal_static_Notification_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_SubscribeReply_fieldAccessorTable = new
+    internal_static_Notification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SubscribeReply_descriptor,
+        internal_static_Notification_descriptor,
         new java.lang.String[] { "Message", });
   }
 

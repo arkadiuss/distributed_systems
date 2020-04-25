@@ -1,12 +1,10 @@
 package main
 
 import (
+	ws "client/grpc/weatherservice"
 	"context"
 	"google.golang.org/grpc"
 	"log"
-	"time"
-
-	ws "client/grpc/weatherservice"
 )
 
 func main() {
@@ -19,6 +17,16 @@ func main() {
 	}
 	defer conn.Close()
 	client := ws.NewWeatherServiceClient(conn)
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	client.Subscribe(ctx, &ws.SubscribeRequest{Name:"test"})
+	ctx, _ := context.WithCancel(context.Background())
+	stream, err := client.Subscribe(ctx, &ws.SubscribeRequest{City:"test"})
+	if err != nil {
+		log.Fatalf("fail to subscribe: %v", err)
+	}
+	for {
+		notification, err := stream.Recv()
+		if err != nil {
+			log.Fatalf("fail to recv: %v", err)
+		}
+		log.Printf("received message: %v \n", notification.Message)
+	}
 }

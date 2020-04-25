@@ -8,10 +8,9 @@ class Server {
 
     @Throws(IOException::class)
     private fun start() {
-        server = ServerBuilder.forPort(port) //				.addService(new CalculatorImpl())
-//				//.addService(new CalculatorImpl())
-//				.addService(new AdvancedCalculatorImpl())
-				.addService(WeatherServiceImpl())
+        val weatherService = WeatherServiceImpl()
+        server = ServerBuilder.forPort(port)
+				.addService(weatherService)
                 .build()
                 .start()
         logger.info("Server started, listening on $port")
@@ -22,6 +21,7 @@ class Server {
                 System.err.println("*** server shut down")
             }
         })
+        weatherService.generateEvents()
     }
 
     private fun stop() {

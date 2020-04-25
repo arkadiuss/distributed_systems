@@ -2,13 +2,13 @@ syntax='proto3';
 option go_package = "grpc/weatherservice";
 
 service WeatherService {
-  rpc Subscribe (SubscribeRequest) returns (SubscribeReply) {}
+  rpc Subscribe (SubscribeRequest) returns (stream Notification) {}
 }
 
 message SubscribeRequest {
-  string name = 1;
+  string city = 1;
 }
 
-message SubscribeReply {
+message Notification {
   string message = 1;
 }
