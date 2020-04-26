@@ -29,18 +29,263 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+type Notification_Type int32
+
+const (
+	Notification_TEMP     Notification_Type = 0
+	Notification_WIND     Notification_Type = 1
+	Notification_HUMIDITY Notification_Type = 2
+)
+
+// Enum value maps for Notification_Type.
+var (
+	Notification_Type_name = map[int32]string{
+		0: "TEMP",
+		1: "WIND",
+		2: "HUMIDITY",
+	}
+	Notification_Type_value = map[string]int32{
+		"TEMP":     0,
+		"WIND":     1,
+		"HUMIDITY": 2,
+	}
+)
+
+func (x Notification_Type) Enum() *Notification_Type {
+	p := new(Notification_Type)
+	*p = x
+	return p
+}
+
+func (x Notification_Type) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Notification_Type) Descriptor() protoreflect.EnumDescriptor {
+	return file_weather_service_proto_enumTypes[0].Descriptor()
+}
+
+func (Notification_Type) Type() protoreflect.EnumType {
+	return &file_weather_service_proto_enumTypes[0]
+}
+
+func (x Notification_Type) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Notification_Type.Descriptor instead.
+func (Notification_Type) EnumDescriptor() ([]byte, []int) {
+	return file_weather_service_proto_rawDescGZIP(), []int{5, 0}
+}
+
+type ValueRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ValueRequest) Reset() {
+	*x = ValueRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_weather_service_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ValueRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValueRequest) ProtoMessage() {}
+
+func (x *ValueRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_weather_service_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValueRequest.ProtoReflect.Descriptor instead.
+func (*ValueRequest) Descriptor() ([]byte, []int) {
+	return file_weather_service_proto_rawDescGZIP(), []int{0}
+}
+
+type ValueResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Values []string `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+}
+
+func (x *ValueResponse) Reset() {
+	*x = ValueResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_weather_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ValueResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValueResponse) ProtoMessage() {}
+
+func (x *ValueResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_weather_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValueResponse.ProtoReflect.Descriptor instead.
+func (*ValueResponse) Descriptor() ([]byte, []int) {
+	return file_weather_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ValueResponse) GetValues() []string {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
+type Range struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Min int32 `protobuf:"varint,1,opt,name=min,proto3" json:"min,omitempty"`
+	Max int32 `protobuf:"varint,2,opt,name=max,proto3" json:"max,omitempty"`
+}
+
+func (x *Range) Reset() {
+	*x = Range{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_weather_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Range) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Range) ProtoMessage() {}
+
+func (x *Range) ProtoReflect() protoreflect.Message {
+	mi := &file_weather_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Range.ProtoReflect.Descriptor instead.
+func (*Range) Descriptor() ([]byte, []int) {
+	return file_weather_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Range) GetMin() int32 {
+	if x != nil {
+		return x.Min
+	}
+	return 0
+}
+
+func (x *Range) GetMax() int32 {
+	if x != nil {
+		return x.Max
+	}
+	return 0
+}
+
+type Factor struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Range *Range `protobuf:"bytes,2,opt,name=range,proto3" json:"range,omitempty"`
+}
+
+func (x *Factor) Reset() {
+	*x = Factor{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_weather_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Factor) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Factor) ProtoMessage() {}
+
+func (x *Factor) ProtoReflect() protoreflect.Message {
+	mi := &file_weather_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Factor.ProtoReflect.Descriptor instead.
+func (*Factor) Descriptor() ([]byte, []int) {
+	return file_weather_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Factor) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Factor) GetRange() *Range {
+	if x != nil {
+		return x.Range
+	}
+	return nil
+}
+
 type SubscribeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	City string `protobuf:"bytes,1,opt,name=city,proto3" json:"city,omitempty"`
+	Cities  []string  `protobuf:"bytes,1,rep,name=cities,proto3" json:"cities,omitempty"`
+	Factors []*Factor `protobuf:"bytes,2,rep,name=factors,proto3" json:"factors,omitempty"`
 }
 
 func (x *SubscribeRequest) Reset() {
 	*x = SubscribeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_weather_service_proto_msgTypes[0]
+		mi := &file_weather_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -53,7 +298,7 @@ func (x *SubscribeRequest) String() string {
 func (*SubscribeRequest) ProtoMessage() {}
 
 func (x *SubscribeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_weather_service_proto_msgTypes[0]
+	mi := &file_weather_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,14 +311,21 @@ func (x *SubscribeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscribeRequest.ProtoReflect.Descriptor instead.
 func (*SubscribeRequest) Descriptor() ([]byte, []int) {
-	return file_weather_service_proto_rawDescGZIP(), []int{0}
+	return file_weather_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *SubscribeRequest) GetCity() string {
+func (x *SubscribeRequest) GetCities() []string {
 	if x != nil {
-		return x.City
+		return x.Cities
 	}
-	return ""
+	return nil
+}
+
+func (x *SubscribeRequest) GetFactors() []*Factor {
+	if x != nil {
+		return x.Factors
+	}
+	return nil
 }
 
 type Notification struct {
@@ -81,13 +333,14 @@ type Notification struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Type    Notification_Type `protobuf:"varint,1,opt,name=type,proto3,enum=Notification_Type" json:"type,omitempty"`
+	Message string            `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *Notification) Reset() {
 	*x = Notification{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_weather_service_proto_msgTypes[1]
+		mi := &file_weather_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -100,7 +353,7 @@ func (x *Notification) String() string {
 func (*Notification) ProtoMessage() {}
 
 func (x *Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_weather_service_proto_msgTypes[1]
+	mi := &file_weather_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +366,14 @@ func (x *Notification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Notification.ProtoReflect.Descriptor instead.
 func (*Notification) Descriptor() ([]byte, []int) {
-	return file_weather_service_proto_rawDescGZIP(), []int{1}
+	return file_weather_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Notification) GetType() Notification_Type {
+	if x != nil {
+		return x.Type
+	}
+	return Notification_TEMP
 }
 
 func (x *Notification) GetMessage() string {
@@ -127,18 +387,42 @@ var File_weather_service_proto protoreflect.FileDescriptor
 
 var file_weather_service_proto_rawDesc = []byte{
 	0x0a, 0x15, 0x77, 0x65, 0x61, 0x74, 0x68, 0x65, 0x72, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x26, 0x0a, 0x10, 0x53, 0x75, 0x62, 0x73, 0x63,
-	0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x63,
-	0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x69, 0x74, 0x79, 0x22,
-	0x28, 0x0a, 0x0c, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12,
-	0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x32, 0x43, 0x0a, 0x0e, 0x57, 0x65, 0x61,
-	0x74, 0x68, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x31, 0x0a, 0x09, 0x53,
-	0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x12, 0x11, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63,
-	0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x4e, 0x6f,
-	0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x00, 0x30, 0x01, 0x42, 0x15,
-	0x5a, 0x13, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x77, 0x65, 0x61, 0x74, 0x68, 0x65, 0x72, 0x73, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x0e, 0x0a, 0x0c, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x27, 0x0a, 0x0d, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73,
+	0x22, 0x2b, 0x0a, 0x05, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x69, 0x6e,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6d, 0x69, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x6d,
+	0x61, 0x78, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6d, 0x61, 0x78, 0x22, 0x3a, 0x0a,
+	0x06, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1c, 0x0a, 0x05, 0x72,
+	0x61, 0x6e, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x06, 0x2e, 0x52, 0x61, 0x6e,
+	0x67, 0x65, 0x52, 0x05, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x22, 0x4d, 0x0a, 0x10, 0x53, 0x75, 0x62,
+	0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a,
+	0x06, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x63,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x21, 0x0a, 0x07, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x73,
+	0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x07, 0x2e, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x52,
+	0x07, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x22, 0x7a, 0x0a, 0x0c, 0x4e, 0x6f, 0x74, 0x69,
+	0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x26, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x28, 0x0a, 0x04, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x08, 0x0a, 0x04, 0x54, 0x45, 0x4d, 0x50, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04,
+	0x57, 0x49, 0x4e, 0x44, 0x10, 0x01, 0x12, 0x0c, 0x0a, 0x08, 0x48, 0x55, 0x4d, 0x49, 0x44, 0x49,
+	0x54, 0x59, 0x10, 0x02, 0x32, 0xa0, 0x01, 0x0a, 0x0e, 0x57, 0x65, 0x61, 0x74, 0x68, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x2c, 0x0a, 0x09, 0x67, 0x65, 0x74, 0x43, 0x69,
+	0x74, 0x69, 0x65, 0x73, 0x12, 0x0d, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x2d, 0x0a, 0x0a, 0x67, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x73, 0x12, 0x0d, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x12, 0x31, 0x0a, 0x09, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62,
+	0x65, 0x12, 0x11, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x22, 0x00, 0x30, 0x01, 0x42, 0x15, 0x5a, 0x13, 0x67, 0x72, 0x70, 0x63, 0x2f,
+	0x77, 0x65, 0x61, 0x74, 0x68, 0x65, 0x72, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -153,19 +437,32 @@ func file_weather_service_proto_rawDescGZIP() []byte {
 	return file_weather_service_proto_rawDescData
 }
 
-var file_weather_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_weather_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_weather_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_weather_service_proto_goTypes = []interface{}{
-	(*SubscribeRequest)(nil), // 0: SubscribeRequest
-	(*Notification)(nil),     // 1: Notification
+	(Notification_Type)(0),   // 0: Notification.Type
+	(*ValueRequest)(nil),     // 1: ValueRequest
+	(*ValueResponse)(nil),    // 2: ValueResponse
+	(*Range)(nil),            // 3: Range
+	(*Factor)(nil),           // 4: Factor
+	(*SubscribeRequest)(nil), // 5: SubscribeRequest
+	(*Notification)(nil),     // 6: Notification
 }
 var file_weather_service_proto_depIdxs = []int32{
-	0, // 0: WeatherService.Subscribe:input_type -> SubscribeRequest
-	1, // 1: WeatherService.Subscribe:output_type -> Notification
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	3, // 0: Factor.range:type_name -> Range
+	4, // 1: SubscribeRequest.factors:type_name -> Factor
+	0, // 2: Notification.type:type_name -> Notification.Type
+	1, // 3: WeatherService.getCities:input_type -> ValueRequest
+	1, // 4: WeatherService.getFactors:input_type -> ValueRequest
+	5, // 5: WeatherService.subscribe:input_type -> SubscribeRequest
+	2, // 6: WeatherService.getCities:output_type -> ValueResponse
+	2, // 7: WeatherService.getFactors:output_type -> ValueResponse
+	6, // 8: WeatherService.subscribe:output_type -> Notification
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_weather_service_proto_init() }
@@ -175,7 +472,7 @@ func file_weather_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_weather_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubscribeRequest); i {
+			switch v := v.(*ValueRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -187,6 +484,54 @@ func file_weather_service_proto_init() {
 			}
 		}
 		file_weather_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ValueResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_weather_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Range); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_weather_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Factor); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_weather_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SubscribeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_weather_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Notification); i {
 			case 0:
 				return &v.state
@@ -204,13 +549,14 @@ func file_weather_service_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_weather_service_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   2,
+			NumEnums:      1,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_weather_service_proto_goTypes,
 		DependencyIndexes: file_weather_service_proto_depIdxs,
+		EnumInfos:         file_weather_service_proto_enumTypes,
 		MessageInfos:      file_weather_service_proto_msgTypes,
 	}.Build()
 	File_weather_service_proto = out.File
@@ -231,6 +577,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type WeatherServiceClient interface {
+	GetCities(ctx context.Context, in *ValueRequest, opts ...grpc.CallOption) (*ValueResponse, error)
+	GetFactors(ctx context.Context, in *ValueRequest, opts ...grpc.CallOption) (*ValueResponse, error)
 	Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (WeatherService_SubscribeClient, error)
 }
 
@@ -242,8 +590,26 @@ func NewWeatherServiceClient(cc grpc.ClientConnInterface) WeatherServiceClient {
 	return &weatherServiceClient{cc}
 }
 
+func (c *weatherServiceClient) GetCities(ctx context.Context, in *ValueRequest, opts ...grpc.CallOption) (*ValueResponse, error) {
+	out := new(ValueResponse)
+	err := c.cc.Invoke(ctx, "/WeatherService/getCities", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *weatherServiceClient) GetFactors(ctx context.Context, in *ValueRequest, opts ...grpc.CallOption) (*ValueResponse, error) {
+	out := new(ValueResponse)
+	err := c.cc.Invoke(ctx, "/WeatherService/getFactors", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *weatherServiceClient) Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (WeatherService_SubscribeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_WeatherService_serviceDesc.Streams[0], "/WeatherService/Subscribe", opts...)
+	stream, err := c.cc.NewStream(ctx, &_WeatherService_serviceDesc.Streams[0], "/WeatherService/subscribe", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -276,6 +642,8 @@ func (x *weatherServiceSubscribeClient) Recv() (*Notification, error) {
 
 // WeatherServiceServer is the server API for WeatherService service.
 type WeatherServiceServer interface {
+	GetCities(context.Context, *ValueRequest) (*ValueResponse, error)
+	GetFactors(context.Context, *ValueRequest) (*ValueResponse, error)
 	Subscribe(*SubscribeRequest, WeatherService_SubscribeServer) error
 }
 
@@ -283,12 +651,54 @@ type WeatherServiceServer interface {
 type UnimplementedWeatherServiceServer struct {
 }
 
+func (*UnimplementedWeatherServiceServer) GetCities(context.Context, *ValueRequest) (*ValueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCities not implemented")
+}
+func (*UnimplementedWeatherServiceServer) GetFactors(context.Context, *ValueRequest) (*ValueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFactors not implemented")
+}
 func (*UnimplementedWeatherServiceServer) Subscribe(*SubscribeRequest, WeatherService_SubscribeServer) error {
 	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
 }
 
 func RegisterWeatherServiceServer(s *grpc.Server, srv WeatherServiceServer) {
 	s.RegisterService(&_WeatherService_serviceDesc, srv)
+}
+
+func _WeatherService_GetCities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WeatherServiceServer).GetCities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/WeatherService/GetCities",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WeatherServiceServer).GetCities(ctx, req.(*ValueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WeatherService_GetFactors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WeatherServiceServer).GetFactors(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/WeatherService/GetFactors",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WeatherServiceServer).GetFactors(ctx, req.(*ValueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _WeatherService_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -315,10 +725,19 @@ func (x *weatherServiceSubscribeServer) Send(m *Notification) error {
 var _WeatherService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "WeatherService",
 	HandlerType: (*WeatherServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "getCities",
+			Handler:    _WeatherService_GetCities_Handler,
+		},
+		{
+			MethodName: "getFactors",
+			Handler:    _WeatherService_GetFactors_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "Subscribe",
+			StreamName:    "subscribe",
 			Handler:       _WeatherService_Subscribe_Handler,
 			ServerStreams: true,
 		},

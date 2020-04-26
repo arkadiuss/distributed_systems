@@ -2,13 +2,37 @@ syntax='proto3';
 option go_package = "grpc/weatherservice";
 
 service WeatherService {
-  rpc Subscribe (SubscribeRequest) returns (stream Notification) {}
+  rpc getCities(ValueRequest) returns (ValueResponse) {}
+  rpc getFactors(ValueRequest) returns (ValueResponse) {}
+  rpc subscribe(SubscribeRequest) returns (stream Notification) {}
+}
+
+message ValueRequest {}
+message ValueResponse {
+  repeated string values = 1;
+}
+
+message Range {
+  int32 min = 1;
+  int32 max = 2;
+}
+
+message Factor {
+  string name = 1;
+  Range range = 2;
 }
 
 message SubscribeRequest {
-  string city = 1;
+  repeated string cities = 1;
+  repeated Factor factors = 2;
 }
 
 message Notification {
-  string message = 1;
+  enum Type {
+    TEMP = 0;
+    WIND = 1;
+    HUMIDITY = 2;
+  }
+  Type type = 1;
+  string message = 2;
 }

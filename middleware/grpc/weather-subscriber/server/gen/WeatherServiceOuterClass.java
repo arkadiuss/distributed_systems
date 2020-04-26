@@ -12,43 +12,30 @@ public final class WeatherServiceOuterClass {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface SubscribeRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SubscribeRequest)
+  public interface ValueRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ValueRequest)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string city = 1;</code>
-     * @return The city.
-     */
-    java.lang.String getCity();
-    /**
-     * <code>string city = 1;</code>
-     * @return The bytes for city.
-     */
-    com.google.protobuf.ByteString
-        getCityBytes();
   }
   /**
-   * Protobuf type {@code SubscribeRequest}
+   * Protobuf type {@code ValueRequest}
    */
-  public  static final class SubscribeRequest extends
+  public  static final class ValueRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SubscribeRequest)
-      SubscribeRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:ValueRequest)
+      ValueRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SubscribeRequest.newBuilder() to construct.
-    private SubscribeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ValueRequest.newBuilder() to construct.
+    private ValueRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SubscribeRequest() {
-      city_ = "";
+    private ValueRequest() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SubscribeRequest();
+      return new ValueRequest();
     }
 
     @java.lang.Override
@@ -56,7 +43,7 @@ public final class WeatherServiceOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SubscribeRequest(
+    private ValueRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -74,10 +61,1082 @@ public final class WeatherServiceOuterClass {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return WeatherServiceOuterClass.internal_static_ValueRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return WeatherServiceOuterClass.internal_static_ValueRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              WeatherServiceOuterClass.ValueRequest.class, WeatherServiceOuterClass.ValueRequest.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof WeatherServiceOuterClass.ValueRequest)) {
+        return super.equals(obj);
+      }
+      WeatherServiceOuterClass.ValueRequest other = (WeatherServiceOuterClass.ValueRequest) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(WeatherServiceOuterClass.ValueRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ValueRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ValueRequest)
+        WeatherServiceOuterClass.ValueRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return WeatherServiceOuterClass.internal_static_ValueRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return WeatherServiceOuterClass.internal_static_ValueRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                WeatherServiceOuterClass.ValueRequest.class, WeatherServiceOuterClass.ValueRequest.Builder.class);
+      }
+
+      // Construct using WeatherServiceOuterClass.ValueRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return WeatherServiceOuterClass.internal_static_ValueRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueRequest getDefaultInstanceForType() {
+        return WeatherServiceOuterClass.ValueRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueRequest build() {
+        WeatherServiceOuterClass.ValueRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueRequest buildPartial() {
+        WeatherServiceOuterClass.ValueRequest result = new WeatherServiceOuterClass.ValueRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof WeatherServiceOuterClass.ValueRequest) {
+          return mergeFrom((WeatherServiceOuterClass.ValueRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(WeatherServiceOuterClass.ValueRequest other) {
+        if (other == WeatherServiceOuterClass.ValueRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        WeatherServiceOuterClass.ValueRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (WeatherServiceOuterClass.ValueRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ValueRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:ValueRequest)
+    private static final WeatherServiceOuterClass.ValueRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new WeatherServiceOuterClass.ValueRequest();
+    }
+
+    public static WeatherServiceOuterClass.ValueRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ValueRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ValueRequest>() {
+      @java.lang.Override
+      public ValueRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ValueRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ValueRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ValueRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public WeatherServiceOuterClass.ValueRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ValueResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ValueResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string values = 1;</code>
+     * @return A list containing the values.
+     */
+    java.util.List<java.lang.String>
+        getValuesList();
+    /**
+     * <code>repeated string values = 1;</code>
+     * @return The count of values.
+     */
+    int getValuesCount();
+    /**
+     * <code>repeated string values = 1;</code>
+     * @param index The index of the element to return.
+     * @return The values at the given index.
+     */
+    java.lang.String getValues(int index);
+    /**
+     * <code>repeated string values = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the values at the given index.
+     */
+    com.google.protobuf.ByteString
+        getValuesBytes(int index);
+  }
+  /**
+   * Protobuf type {@code ValueResponse}
+   */
+  public  static final class ValueResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ValueResponse)
+      ValueResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ValueResponse.newBuilder() to construct.
+    private ValueResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ValueResponse() {
+      values_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ValueResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ValueResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                values_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              values_.add(s);
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          values_ = values_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return WeatherServiceOuterClass.internal_static_ValueResponse_descriptor;
+    }
 
-              city_ = s;
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return WeatherServiceOuterClass.internal_static_ValueResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              WeatherServiceOuterClass.ValueResponse.class, WeatherServiceOuterClass.ValueResponse.Builder.class);
+    }
+
+    public static final int VALUES_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList values_;
+    /**
+     * <code>repeated string values = 1;</code>
+     * @return A list containing the values.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getValuesList() {
+      return values_;
+    }
+    /**
+     * <code>repeated string values = 1;</code>
+     * @return The count of values.
+     */
+    public int getValuesCount() {
+      return values_.size();
+    }
+    /**
+     * <code>repeated string values = 1;</code>
+     * @param index The index of the element to return.
+     * @return The values at the given index.
+     */
+    public java.lang.String getValues(int index) {
+      return values_.get(index);
+    }
+    /**
+     * <code>repeated string values = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the values at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getValuesBytes(int index) {
+      return values_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < values_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, values_.getRaw(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < values_.size(); i++) {
+          dataSize += computeStringSizeNoTag(values_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getValuesList().size();
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof WeatherServiceOuterClass.ValueResponse)) {
+        return super.equals(obj);
+      }
+      WeatherServiceOuterClass.ValueResponse other = (WeatherServiceOuterClass.ValueResponse) obj;
+
+      if (!getValuesList()
+          .equals(other.getValuesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getValuesCount() > 0) {
+        hash = (37 * hash) + VALUES_FIELD_NUMBER;
+        hash = (53 * hash) + getValuesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.ValueResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(WeatherServiceOuterClass.ValueResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ValueResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ValueResponse)
+        WeatherServiceOuterClass.ValueResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return WeatherServiceOuterClass.internal_static_ValueResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return WeatherServiceOuterClass.internal_static_ValueResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                WeatherServiceOuterClass.ValueResponse.class, WeatherServiceOuterClass.ValueResponse.Builder.class);
+      }
+
+      // Construct using WeatherServiceOuterClass.ValueResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        values_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return WeatherServiceOuterClass.internal_static_ValueResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueResponse getDefaultInstanceForType() {
+        return WeatherServiceOuterClass.ValueResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueResponse build() {
+        WeatherServiceOuterClass.ValueResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.ValueResponse buildPartial() {
+        WeatherServiceOuterClass.ValueResponse result = new WeatherServiceOuterClass.ValueResponse(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          values_ = values_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.values_ = values_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof WeatherServiceOuterClass.ValueResponse) {
+          return mergeFrom((WeatherServiceOuterClass.ValueResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(WeatherServiceOuterClass.ValueResponse other) {
+        if (other == WeatherServiceOuterClass.ValueResponse.getDefaultInstance()) return this;
+        if (!other.values_.isEmpty()) {
+          if (values_.isEmpty()) {
+            values_ = other.values_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureValuesIsMutable();
+            values_.addAll(other.values_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        WeatherServiceOuterClass.ValueResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (WeatherServiceOuterClass.ValueResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringList values_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureValuesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          values_ = new com.google.protobuf.LazyStringArrayList(values_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @return A list containing the values.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getValuesList() {
+        return values_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @return The count of values.
+       */
+      public int getValuesCount() {
+        return values_.size();
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param index The index of the element to return.
+       * @return The values at the given index.
+       */
+      public java.lang.String getValues(int index) {
+        return values_.get(index);
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the values at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getValuesBytes(int index) {
+        return values_.getByteString(index);
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The values to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValues(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValuesIsMutable();
+        values_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param value The values to add.
+       * @return This builder for chaining.
+       */
+      public Builder addValues(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValuesIsMutable();
+        values_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param values The values to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllValues(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureValuesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, values_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValues() {
+        values_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string values = 1;</code>
+       * @param value The bytes of the values to add.
+       * @return This builder for chaining.
+       */
+      public Builder addValuesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureValuesIsMutable();
+        values_.add(value);
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ValueResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ValueResponse)
+    private static final WeatherServiceOuterClass.ValueResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new WeatherServiceOuterClass.ValueResponse();
+    }
+
+    public static WeatherServiceOuterClass.ValueResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ValueResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ValueResponse>() {
+      @java.lang.Override
+      public ValueResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ValueResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ValueResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ValueResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public WeatherServiceOuterClass.ValueResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RangeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Range)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 min = 1;</code>
+     * @return The min.
+     */
+    int getMin();
+
+    /**
+     * <code>int32 max = 2;</code>
+     * @return The max.
+     */
+    int getMax();
+  }
+  /**
+   * Protobuf type {@code Range}
+   */
+  public  static final class Range extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Range)
+      RangeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Range.newBuilder() to construct.
+    private Range(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Range() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Range();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Range(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              min_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              max_ = input.readInt32();
               break;
             }
             default: {
@@ -101,51 +1160,35 @@ public final class WeatherServiceOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return WeatherServiceOuterClass.internal_static_SubscribeRequest_descriptor;
+      return WeatherServiceOuterClass.internal_static_Range_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return WeatherServiceOuterClass.internal_static_SubscribeRequest_fieldAccessorTable
+      return WeatherServiceOuterClass.internal_static_Range_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              WeatherServiceOuterClass.SubscribeRequest.class, WeatherServiceOuterClass.SubscribeRequest.Builder.class);
+              WeatherServiceOuterClass.Range.class, WeatherServiceOuterClass.Range.Builder.class);
     }
 
-    public static final int CITY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object city_;
+    public static final int MIN_FIELD_NUMBER = 1;
+    private int min_;
     /**
-     * <code>string city = 1;</code>
-     * @return The city.
+     * <code>int32 min = 1;</code>
+     * @return The min.
      */
-    public java.lang.String getCity() {
-      java.lang.Object ref = city_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        city_ = s;
-        return s;
-      }
+    public int getMin() {
+      return min_;
     }
+
+    public static final int MAX_FIELD_NUMBER = 2;
+    private int max_;
     /**
-     * <code>string city = 1;</code>
-     * @return The bytes for city.
+     * <code>int32 max = 2;</code>
+     * @return The max.
      */
-    public com.google.protobuf.ByteString
-        getCityBytes() {
-      java.lang.Object ref = city_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        city_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getMax() {
+      return max_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -162,8 +1205,11 @@ public final class WeatherServiceOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getCityBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, city_);
+      if (min_ != 0) {
+        output.writeInt32(1, min_);
+      }
+      if (max_ != 0) {
+        output.writeInt32(2, max_);
       }
       unknownFields.writeTo(output);
     }
@@ -174,8 +1220,1441 @@ public final class WeatherServiceOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getCityBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, city_);
+      if (min_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, min_);
+      }
+      if (max_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, max_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof WeatherServiceOuterClass.Range)) {
+        return super.equals(obj);
+      }
+      WeatherServiceOuterClass.Range other = (WeatherServiceOuterClass.Range) obj;
+
+      if (getMin()
+          != other.getMin()) return false;
+      if (getMax()
+          != other.getMax()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MIN_FIELD_NUMBER;
+      hash = (53 * hash) + getMin();
+      hash = (37 * hash) + MAX_FIELD_NUMBER;
+      hash = (53 * hash) + getMax();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static WeatherServiceOuterClass.Range parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Range parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Range parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Range parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(WeatherServiceOuterClass.Range prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Range}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Range)
+        WeatherServiceOuterClass.RangeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return WeatherServiceOuterClass.internal_static_Range_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return WeatherServiceOuterClass.internal_static_Range_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                WeatherServiceOuterClass.Range.class, WeatherServiceOuterClass.Range.Builder.class);
+      }
+
+      // Construct using WeatherServiceOuterClass.Range.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        min_ = 0;
+
+        max_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return WeatherServiceOuterClass.internal_static_Range_descriptor;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Range getDefaultInstanceForType() {
+        return WeatherServiceOuterClass.Range.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Range build() {
+        WeatherServiceOuterClass.Range result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Range buildPartial() {
+        WeatherServiceOuterClass.Range result = new WeatherServiceOuterClass.Range(this);
+        result.min_ = min_;
+        result.max_ = max_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof WeatherServiceOuterClass.Range) {
+          return mergeFrom((WeatherServiceOuterClass.Range)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(WeatherServiceOuterClass.Range other) {
+        if (other == WeatherServiceOuterClass.Range.getDefaultInstance()) return this;
+        if (other.getMin() != 0) {
+          setMin(other.getMin());
+        }
+        if (other.getMax() != 0) {
+          setMax(other.getMax());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        WeatherServiceOuterClass.Range parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (WeatherServiceOuterClass.Range) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int min_ ;
+      /**
+       * <code>int32 min = 1;</code>
+       * @return The min.
+       */
+      public int getMin() {
+        return min_;
+      }
+      /**
+       * <code>int32 min = 1;</code>
+       * @param value The min to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMin(int value) {
+        
+        min_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 min = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMin() {
+        
+        min_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int max_ ;
+      /**
+       * <code>int32 max = 2;</code>
+       * @return The max.
+       */
+      public int getMax() {
+        return max_;
+      }
+      /**
+       * <code>int32 max = 2;</code>
+       * @param value The max to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMax(int value) {
+        
+        max_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 max = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMax() {
+        
+        max_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Range)
+    }
+
+    // @@protoc_insertion_point(class_scope:Range)
+    private static final WeatherServiceOuterClass.Range DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new WeatherServiceOuterClass.Range();
+    }
+
+    public static WeatherServiceOuterClass.Range getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Range>
+        PARSER = new com.google.protobuf.AbstractParser<Range>() {
+      @java.lang.Override
+      public Range parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Range(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Range> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Range> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public WeatherServiceOuterClass.Range getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FactorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Factor)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>.Range range = 2;</code>
+     * @return Whether the range field is set.
+     */
+    boolean hasRange();
+    /**
+     * <code>.Range range = 2;</code>
+     * @return The range.
+     */
+    WeatherServiceOuterClass.Range getRange();
+    /**
+     * <code>.Range range = 2;</code>
+     */
+    WeatherServiceOuterClass.RangeOrBuilder getRangeOrBuilder();
+  }
+  /**
+   * Protobuf type {@code Factor}
+   */
+  public  static final class Factor extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Factor)
+      FactorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Factor.newBuilder() to construct.
+    private Factor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Factor() {
+      name_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Factor();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Factor(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 18: {
+              WeatherServiceOuterClass.Range.Builder subBuilder = null;
+              if (range_ != null) {
+                subBuilder = range_.toBuilder();
+              }
+              range_ = input.readMessage(WeatherServiceOuterClass.Range.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(range_);
+                range_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return WeatherServiceOuterClass.internal_static_Factor_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return WeatherServiceOuterClass.internal_static_Factor_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              WeatherServiceOuterClass.Factor.class, WeatherServiceOuterClass.Factor.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RANGE_FIELD_NUMBER = 2;
+    private WeatherServiceOuterClass.Range range_;
+    /**
+     * <code>.Range range = 2;</code>
+     * @return Whether the range field is set.
+     */
+    public boolean hasRange() {
+      return range_ != null;
+    }
+    /**
+     * <code>.Range range = 2;</code>
+     * @return The range.
+     */
+    public WeatherServiceOuterClass.Range getRange() {
+      return range_ == null ? WeatherServiceOuterClass.Range.getDefaultInstance() : range_;
+    }
+    /**
+     * <code>.Range range = 2;</code>
+     */
+    public WeatherServiceOuterClass.RangeOrBuilder getRangeOrBuilder() {
+      return getRange();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (range_ != null) {
+        output.writeMessage(2, getRange());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (range_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRange());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof WeatherServiceOuterClass.Factor)) {
+        return super.equals(obj);
+      }
+      WeatherServiceOuterClass.Factor other = (WeatherServiceOuterClass.Factor) obj;
+
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (hasRange() != other.hasRange()) return false;
+      if (hasRange()) {
+        if (!getRange()
+            .equals(other.getRange())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (hasRange()) {
+        hash = (37 * hash) + RANGE_FIELD_NUMBER;
+        hash = (53 * hash) + getRange().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Factor parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Factor parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static WeatherServiceOuterClass.Factor parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(WeatherServiceOuterClass.Factor prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Factor}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Factor)
+        WeatherServiceOuterClass.FactorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return WeatherServiceOuterClass.internal_static_Factor_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return WeatherServiceOuterClass.internal_static_Factor_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                WeatherServiceOuterClass.Factor.class, WeatherServiceOuterClass.Factor.Builder.class);
+      }
+
+      // Construct using WeatherServiceOuterClass.Factor.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        if (rangeBuilder_ == null) {
+          range_ = null;
+        } else {
+          range_ = null;
+          rangeBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return WeatherServiceOuterClass.internal_static_Factor_descriptor;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Factor getDefaultInstanceForType() {
+        return WeatherServiceOuterClass.Factor.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Factor build() {
+        WeatherServiceOuterClass.Factor result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public WeatherServiceOuterClass.Factor buildPartial() {
+        WeatherServiceOuterClass.Factor result = new WeatherServiceOuterClass.Factor(this);
+        result.name_ = name_;
+        if (rangeBuilder_ == null) {
+          result.range_ = range_;
+        } else {
+          result.range_ = rangeBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof WeatherServiceOuterClass.Factor) {
+          return mergeFrom((WeatherServiceOuterClass.Factor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(WeatherServiceOuterClass.Factor other) {
+        if (other == WeatherServiceOuterClass.Factor.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasRange()) {
+          mergeRange(other.getRange());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        WeatherServiceOuterClass.Factor parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (WeatherServiceOuterClass.Factor) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private WeatherServiceOuterClass.Range range_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          WeatherServiceOuterClass.Range, WeatherServiceOuterClass.Range.Builder, WeatherServiceOuterClass.RangeOrBuilder> rangeBuilder_;
+      /**
+       * <code>.Range range = 2;</code>
+       * @return Whether the range field is set.
+       */
+      public boolean hasRange() {
+        return rangeBuilder_ != null || range_ != null;
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       * @return The range.
+       */
+      public WeatherServiceOuterClass.Range getRange() {
+        if (rangeBuilder_ == null) {
+          return range_ == null ? WeatherServiceOuterClass.Range.getDefaultInstance() : range_;
+        } else {
+          return rangeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public Builder setRange(WeatherServiceOuterClass.Range value) {
+        if (rangeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          range_ = value;
+          onChanged();
+        } else {
+          rangeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public Builder setRange(
+          WeatherServiceOuterClass.Range.Builder builderForValue) {
+        if (rangeBuilder_ == null) {
+          range_ = builderForValue.build();
+          onChanged();
+        } else {
+          rangeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public Builder mergeRange(WeatherServiceOuterClass.Range value) {
+        if (rangeBuilder_ == null) {
+          if (range_ != null) {
+            range_ =
+              WeatherServiceOuterClass.Range.newBuilder(range_).mergeFrom(value).buildPartial();
+          } else {
+            range_ = value;
+          }
+          onChanged();
+        } else {
+          rangeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public Builder clearRange() {
+        if (rangeBuilder_ == null) {
+          range_ = null;
+          onChanged();
+        } else {
+          range_ = null;
+          rangeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public WeatherServiceOuterClass.Range.Builder getRangeBuilder() {
+        
+        onChanged();
+        return getRangeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      public WeatherServiceOuterClass.RangeOrBuilder getRangeOrBuilder() {
+        if (rangeBuilder_ != null) {
+          return rangeBuilder_.getMessageOrBuilder();
+        } else {
+          return range_ == null ?
+              WeatherServiceOuterClass.Range.getDefaultInstance() : range_;
+        }
+      }
+      /**
+       * <code>.Range range = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          WeatherServiceOuterClass.Range, WeatherServiceOuterClass.Range.Builder, WeatherServiceOuterClass.RangeOrBuilder> 
+          getRangeFieldBuilder() {
+        if (rangeBuilder_ == null) {
+          rangeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              WeatherServiceOuterClass.Range, WeatherServiceOuterClass.Range.Builder, WeatherServiceOuterClass.RangeOrBuilder>(
+                  getRange(),
+                  getParentForChildren(),
+                  isClean());
+          range_ = null;
+        }
+        return rangeBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Factor)
+    }
+
+    // @@protoc_insertion_point(class_scope:Factor)
+    private static final WeatherServiceOuterClass.Factor DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new WeatherServiceOuterClass.Factor();
+    }
+
+    public static WeatherServiceOuterClass.Factor getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Factor>
+        PARSER = new com.google.protobuf.AbstractParser<Factor>() {
+      @java.lang.Override
+      public Factor parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Factor(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Factor> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Factor> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public WeatherServiceOuterClass.Factor getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SubscribeRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SubscribeRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @return A list containing the cities.
+     */
+    java.util.List<java.lang.String>
+        getCitiesList();
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @return The count of cities.
+     */
+    int getCitiesCount();
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @param index The index of the element to return.
+     * @return The cities at the given index.
+     */
+    java.lang.String getCities(int index);
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the cities at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCitiesBytes(int index);
+
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    java.util.List<WeatherServiceOuterClass.Factor> 
+        getFactorsList();
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    WeatherServiceOuterClass.Factor getFactors(int index);
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    int getFactorsCount();
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    java.util.List<? extends WeatherServiceOuterClass.FactorOrBuilder> 
+        getFactorsOrBuilderList();
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    WeatherServiceOuterClass.FactorOrBuilder getFactorsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code SubscribeRequest}
+   */
+  public  static final class SubscribeRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SubscribeRequest)
+      SubscribeRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SubscribeRequest.newBuilder() to construct.
+    private SubscribeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SubscribeRequest() {
+      cities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      factors_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SubscribeRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SubscribeRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                cities_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              cities_.add(s);
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                factors_ = new java.util.ArrayList<WeatherServiceOuterClass.Factor>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              factors_.add(
+                  input.readMessage(WeatherServiceOuterClass.Factor.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          cities_ = cities_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          factors_ = java.util.Collections.unmodifiableList(factors_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return WeatherServiceOuterClass.internal_static_SubscribeRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return WeatherServiceOuterClass.internal_static_SubscribeRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              WeatherServiceOuterClass.SubscribeRequest.class, WeatherServiceOuterClass.SubscribeRequest.Builder.class);
+    }
+
+    public static final int CITIES_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList cities_;
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @return A list containing the cities.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getCitiesList() {
+      return cities_;
+    }
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @return The count of cities.
+     */
+    public int getCitiesCount() {
+      return cities_.size();
+    }
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @param index The index of the element to return.
+     * @return The cities at the given index.
+     */
+    public java.lang.String getCities(int index) {
+      return cities_.get(index);
+    }
+    /**
+     * <code>repeated string cities = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the cities at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCitiesBytes(int index) {
+      return cities_.getByteString(index);
+    }
+
+    public static final int FACTORS_FIELD_NUMBER = 2;
+    private java.util.List<WeatherServiceOuterClass.Factor> factors_;
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    public java.util.List<WeatherServiceOuterClass.Factor> getFactorsList() {
+      return factors_;
+    }
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    public java.util.List<? extends WeatherServiceOuterClass.FactorOrBuilder> 
+        getFactorsOrBuilderList() {
+      return factors_;
+    }
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    public int getFactorsCount() {
+      return factors_.size();
+    }
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    public WeatherServiceOuterClass.Factor getFactors(int index) {
+      return factors_.get(index);
+    }
+    /**
+     * <code>repeated .Factor factors = 2;</code>
+     */
+    public WeatherServiceOuterClass.FactorOrBuilder getFactorsOrBuilder(
+        int index) {
+      return factors_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < cities_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, cities_.getRaw(i));
+      }
+      for (int i = 0; i < factors_.size(); i++) {
+        output.writeMessage(2, factors_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < cities_.size(); i++) {
+          dataSize += computeStringSizeNoTag(cities_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCitiesList().size();
+      }
+      for (int i = 0; i < factors_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, factors_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -192,8 +2671,10 @@ public final class WeatherServiceOuterClass {
       }
       WeatherServiceOuterClass.SubscribeRequest other = (WeatherServiceOuterClass.SubscribeRequest) obj;
 
-      if (!getCity()
-          .equals(other.getCity())) return false;
+      if (!getCitiesList()
+          .equals(other.getCitiesList())) return false;
+      if (!getFactorsList()
+          .equals(other.getFactorsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -205,8 +2686,14 @@ public final class WeatherServiceOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CITY_FIELD_NUMBER;
-      hash = (53 * hash) + getCity().hashCode();
+      if (getCitiesCount() > 0) {
+        hash = (37 * hash) + CITIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCitiesList().hashCode();
+      }
+      if (getFactorsCount() > 0) {
+        hash = (37 * hash) + FACTORS_FIELD_NUMBER;
+        hash = (53 * hash) + getFactorsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -335,13 +2822,20 @@ public final class WeatherServiceOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getFactorsFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        city_ = "";
-
+        cities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (factorsBuilder_ == null) {
+          factors_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          factorsBuilder_.clear();
+        }
         return this;
       }
 
@@ -368,7 +2862,21 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public WeatherServiceOuterClass.SubscribeRequest buildPartial() {
         WeatherServiceOuterClass.SubscribeRequest result = new WeatherServiceOuterClass.SubscribeRequest(this);
-        result.city_ = city_;
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          cities_ = cities_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.cities_ = cities_;
+        if (factorsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            factors_ = java.util.Collections.unmodifiableList(factors_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.factors_ = factors_;
+        } else {
+          result.factors_ = factorsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -417,9 +2925,41 @@ public final class WeatherServiceOuterClass {
 
       public Builder mergeFrom(WeatherServiceOuterClass.SubscribeRequest other) {
         if (other == WeatherServiceOuterClass.SubscribeRequest.getDefaultInstance()) return this;
-        if (!other.getCity().isEmpty()) {
-          city_ = other.city_;
+        if (!other.cities_.isEmpty()) {
+          if (cities_.isEmpty()) {
+            cities_ = other.cities_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureCitiesIsMutable();
+            cities_.addAll(other.cities_);
+          }
           onChanged();
+        }
+        if (factorsBuilder_ == null) {
+          if (!other.factors_.isEmpty()) {
+            if (factors_.isEmpty()) {
+              factors_ = other.factors_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureFactorsIsMutable();
+              factors_.addAll(other.factors_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.factors_.isEmpty()) {
+            if (factorsBuilder_.isEmpty()) {
+              factorsBuilder_.dispose();
+              factorsBuilder_ = null;
+              factors_ = other.factors_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              factorsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getFactorsFieldBuilder() : null;
+            } else {
+              factorsBuilder_.addAllMessages(other.factors_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -449,81 +2989,356 @@ public final class WeatherServiceOuterClass {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object city_ = "";
-      /**
-       * <code>string city = 1;</code>
-       * @return The city.
-       */
-      public java.lang.String getCity() {
-        java.lang.Object ref = city_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          city_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList cities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureCitiesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          cities_ = new com.google.protobuf.LazyStringArrayList(cities_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>string city = 1;</code>
-       * @return The bytes for city.
+       * <code>repeated string cities = 1;</code>
+       * @return A list containing the cities.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCitiesList() {
+        return cities_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string cities = 1;</code>
+       * @return The count of cities.
+       */
+      public int getCitiesCount() {
+        return cities_.size();
+      }
+      /**
+       * <code>repeated string cities = 1;</code>
+       * @param index The index of the element to return.
+       * @return The cities at the given index.
+       */
+      public java.lang.String getCities(int index) {
+        return cities_.get(index);
+      }
+      /**
+       * <code>repeated string cities = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the cities at the given index.
        */
       public com.google.protobuf.ByteString
-          getCityBytes() {
-        java.lang.Object ref = city_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          city_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getCitiesBytes(int index) {
+        return cities_.getByteString(index);
       }
       /**
-       * <code>string city = 1;</code>
-       * @param value The city to set.
+       * <code>repeated string cities = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The cities to set.
        * @return This builder for chaining.
        */
-      public Builder setCity(
+      public Builder setCities(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCitiesIsMutable();
+        cities_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cities = 1;</code>
+       * @param value The cities to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCities(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        city_ = value;
+  ensureCitiesIsMutable();
+        cities_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string city = 1;</code>
+       * <code>repeated string cities = 1;</code>
+       * @param values The cities to add.
        * @return This builder for chaining.
        */
-      public Builder clearCity() {
-        
-        city_ = getDefaultInstance().getCity();
+      public Builder addAllCities(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCitiesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, cities_);
         onChanged();
         return this;
       }
       /**
-       * <code>string city = 1;</code>
-       * @param value The bytes for city to set.
+       * <code>repeated string cities = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder setCityBytes(
+      public Builder clearCities() {
+        cities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cities = 1;</code>
+       * @param value The bytes of the cities to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCitiesBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        city_ = value;
+        ensureCitiesIsMutable();
+        cities_.add(value);
         onChanged();
         return this;
+      }
+
+      private java.util.List<WeatherServiceOuterClass.Factor> factors_ =
+        java.util.Collections.emptyList();
+      private void ensureFactorsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          factors_ = new java.util.ArrayList<WeatherServiceOuterClass.Factor>(factors_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          WeatherServiceOuterClass.Factor, WeatherServiceOuterClass.Factor.Builder, WeatherServiceOuterClass.FactorOrBuilder> factorsBuilder_;
+
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public java.util.List<WeatherServiceOuterClass.Factor> getFactorsList() {
+        if (factorsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(factors_);
+        } else {
+          return factorsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public int getFactorsCount() {
+        if (factorsBuilder_ == null) {
+          return factors_.size();
+        } else {
+          return factorsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public WeatherServiceOuterClass.Factor getFactors(int index) {
+        if (factorsBuilder_ == null) {
+          return factors_.get(index);
+        } else {
+          return factorsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder setFactors(
+          int index, WeatherServiceOuterClass.Factor value) {
+        if (factorsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFactorsIsMutable();
+          factors_.set(index, value);
+          onChanged();
+        } else {
+          factorsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder setFactors(
+          int index, WeatherServiceOuterClass.Factor.Builder builderForValue) {
+        if (factorsBuilder_ == null) {
+          ensureFactorsIsMutable();
+          factors_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          factorsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder addFactors(WeatherServiceOuterClass.Factor value) {
+        if (factorsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFactorsIsMutable();
+          factors_.add(value);
+          onChanged();
+        } else {
+          factorsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder addFactors(
+          int index, WeatherServiceOuterClass.Factor value) {
+        if (factorsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFactorsIsMutable();
+          factors_.add(index, value);
+          onChanged();
+        } else {
+          factorsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder addFactors(
+          WeatherServiceOuterClass.Factor.Builder builderForValue) {
+        if (factorsBuilder_ == null) {
+          ensureFactorsIsMutable();
+          factors_.add(builderForValue.build());
+          onChanged();
+        } else {
+          factorsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder addFactors(
+          int index, WeatherServiceOuterClass.Factor.Builder builderForValue) {
+        if (factorsBuilder_ == null) {
+          ensureFactorsIsMutable();
+          factors_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          factorsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder addAllFactors(
+          java.lang.Iterable<? extends WeatherServiceOuterClass.Factor> values) {
+        if (factorsBuilder_ == null) {
+          ensureFactorsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, factors_);
+          onChanged();
+        } else {
+          factorsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder clearFactors() {
+        if (factorsBuilder_ == null) {
+          factors_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          factorsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public Builder removeFactors(int index) {
+        if (factorsBuilder_ == null) {
+          ensureFactorsIsMutable();
+          factors_.remove(index);
+          onChanged();
+        } else {
+          factorsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public WeatherServiceOuterClass.Factor.Builder getFactorsBuilder(
+          int index) {
+        return getFactorsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public WeatherServiceOuterClass.FactorOrBuilder getFactorsOrBuilder(
+          int index) {
+        if (factorsBuilder_ == null) {
+          return factors_.get(index);  } else {
+          return factorsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public java.util.List<? extends WeatherServiceOuterClass.FactorOrBuilder> 
+           getFactorsOrBuilderList() {
+        if (factorsBuilder_ != null) {
+          return factorsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(factors_);
+        }
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public WeatherServiceOuterClass.Factor.Builder addFactorsBuilder() {
+        return getFactorsFieldBuilder().addBuilder(
+            WeatherServiceOuterClass.Factor.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public WeatherServiceOuterClass.Factor.Builder addFactorsBuilder(
+          int index) {
+        return getFactorsFieldBuilder().addBuilder(
+            index, WeatherServiceOuterClass.Factor.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Factor factors = 2;</code>
+       */
+      public java.util.List<WeatherServiceOuterClass.Factor.Builder> 
+           getFactorsBuilderList() {
+        return getFactorsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          WeatherServiceOuterClass.Factor, WeatherServiceOuterClass.Factor.Builder, WeatherServiceOuterClass.FactorOrBuilder> 
+          getFactorsFieldBuilder() {
+        if (factorsBuilder_ == null) {
+          factorsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              WeatherServiceOuterClass.Factor, WeatherServiceOuterClass.Factor.Builder, WeatherServiceOuterClass.FactorOrBuilder>(
+                  factors_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          factors_ = null;
+        }
+        return factorsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -583,12 +3398,23 @@ public final class WeatherServiceOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string message = 1;</code>
+     * <code>.Notification.Type type = 1;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    int getTypeValue();
+    /**
+     * <code>.Notification.Type type = 1;</code>
+     * @return The type.
+     */
+    WeatherServiceOuterClass.Notification.Type getType();
+
+    /**
+     * <code>string message = 2;</code>
      * @return The message.
      */
     java.lang.String getMessage();
     /**
-     * <code>string message = 1;</code>
+     * <code>string message = 2;</code>
      * @return The bytes for message.
      */
     com.google.protobuf.ByteString
@@ -607,6 +3433,7 @@ public final class WeatherServiceOuterClass {
       super(builder);
     }
     private Notification() {
+      type_ = 0;
       message_ = "";
     }
 
@@ -640,7 +3467,13 @@ public final class WeatherServiceOuterClass {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               message_ = s;
@@ -678,10 +3511,142 @@ public final class WeatherServiceOuterClass {
               WeatherServiceOuterClass.Notification.class, WeatherServiceOuterClass.Notification.Builder.class);
     }
 
-    public static final int MESSAGE_FIELD_NUMBER = 1;
+    /**
+     * Protobuf enum {@code Notification.Type}
+     */
+    public enum Type
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>TEMP = 0;</code>
+       */
+      TEMP(0),
+      /**
+       * <code>WIND = 1;</code>
+       */
+      WIND(1),
+      /**
+       * <code>HUMIDITY = 2;</code>
+       */
+      HUMIDITY(2),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>TEMP = 0;</code>
+       */
+      public static final int TEMP_VALUE = 0;
+      /**
+       * <code>WIND = 1;</code>
+       */
+      public static final int WIND_VALUE = 1;
+      /**
+       * <code>HUMIDITY = 2;</code>
+       */
+      public static final int HUMIDITY_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static Type valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static Type forNumber(int value) {
+        switch (value) {
+          case 0: return TEMP;
+          case 1: return WIND;
+          case 2: return HUMIDITY;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Type> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+              public Type findValueByNumber(int number) {
+                return Type.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return WeatherServiceOuterClass.Notification.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Type[] VALUES = values();
+
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private Type(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:Notification.Type)
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>.Notification.Type type = 1;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.Notification.Type type = 1;</code>
+     * @return The type.
+     */
+    public WeatherServiceOuterClass.Notification.Type getType() {
+      @SuppressWarnings("deprecation")
+      WeatherServiceOuterClass.Notification.Type result = WeatherServiceOuterClass.Notification.Type.valueOf(type_);
+      return result == null ? WeatherServiceOuterClass.Notification.Type.UNRECOGNIZED : result;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
     private volatile java.lang.Object message_;
     /**
-     * <code>string message = 1;</code>
+     * <code>string message = 2;</code>
      * @return The message.
      */
     public java.lang.String getMessage() {
@@ -697,7 +3662,7 @@ public final class WeatherServiceOuterClass {
       }
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string message = 2;</code>
      * @return The bytes for message.
      */
     public com.google.protobuf.ByteString
@@ -728,8 +3693,11 @@ public final class WeatherServiceOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (type_ != WeatherServiceOuterClass.Notification.Type.TEMP.getNumber()) {
+        output.writeEnum(1, type_);
+      }
       if (!getMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
       unknownFields.writeTo(output);
     }
@@ -740,8 +3708,12 @@ public final class WeatherServiceOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (type_ != WeatherServiceOuterClass.Notification.Type.TEMP.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
       if (!getMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -758,6 +3730,7 @@ public final class WeatherServiceOuterClass {
       }
       WeatherServiceOuterClass.Notification other = (WeatherServiceOuterClass.Notification) obj;
 
+      if (type_ != other.type_) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -771,6 +3744,8 @@ public final class WeatherServiceOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -906,6 +3881,8 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        type_ = 0;
+
         message_ = "";
 
         return this;
@@ -934,6 +3911,7 @@ public final class WeatherServiceOuterClass {
       @java.lang.Override
       public WeatherServiceOuterClass.Notification buildPartial() {
         WeatherServiceOuterClass.Notification result = new WeatherServiceOuterClass.Notification(this);
+        result.type_ = type_;
         result.message_ = message_;
         onBuilt();
         return result;
@@ -983,6 +3961,9 @@ public final class WeatherServiceOuterClass {
 
       public Builder mergeFrom(WeatherServiceOuterClass.Notification other) {
         if (other == WeatherServiceOuterClass.Notification.getDefaultInstance()) return this;
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
           onChanged();
@@ -1016,9 +3997,61 @@ public final class WeatherServiceOuterClass {
         return this;
       }
 
+      private int type_ = 0;
+      /**
+       * <code>.Notification.Type type = 1;</code>
+       * @return The enum numeric value on the wire for type.
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <code>.Notification.Type type = 1;</code>
+       * @param value The enum numeric value on the wire for type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Notification.Type type = 1;</code>
+       * @return The type.
+       */
+      public WeatherServiceOuterClass.Notification.Type getType() {
+        @SuppressWarnings("deprecation")
+        WeatherServiceOuterClass.Notification.Type result = WeatherServiceOuterClass.Notification.Type.valueOf(type_);
+        return result == null ? WeatherServiceOuterClass.Notification.Type.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.Notification.Type type = 1;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(WeatherServiceOuterClass.Notification.Type value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Notification.Type type = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object message_ = "";
       /**
-       * <code>string message = 1;</code>
+       * <code>string message = 2;</code>
        * @return The message.
        */
       public java.lang.String getMessage() {
@@ -1034,7 +4067,7 @@ public final class WeatherServiceOuterClass {
         }
       }
       /**
-       * <code>string message = 1;</code>
+       * <code>string message = 2;</code>
        * @return The bytes for message.
        */
       public com.google.protobuf.ByteString
@@ -1051,7 +4084,7 @@ public final class WeatherServiceOuterClass {
         }
       }
       /**
-       * <code>string message = 1;</code>
+       * <code>string message = 2;</code>
        * @param value The message to set.
        * @return This builder for chaining.
        */
@@ -1066,7 +4099,7 @@ public final class WeatherServiceOuterClass {
         return this;
       }
       /**
-       * <code>string message = 1;</code>
+       * <code>string message = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessage() {
@@ -1076,7 +4109,7 @@ public final class WeatherServiceOuterClass {
         return this;
       }
       /**
-       * <code>string message = 1;</code>
+       * <code>string message = 2;</code>
        * @param value The bytes for message to set.
        * @return This builder for chaining.
        */
@@ -1145,6 +4178,26 @@ public final class WeatherServiceOuterClass {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ValueRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ValueRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ValueResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ValueResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Range_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Range_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Factor_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Factor_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SubscribeRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1163,28 +4216,60 @@ public final class WeatherServiceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025weather-service.proto\" \n\020SubscribeRequ" +
-      "est\022\014\n\004city\030\001 \001(\t\"\037\n\014Notification\022\017\n\007mes" +
-      "sage\030\001 \001(\t2C\n\016WeatherService\0221\n\tSubscrib" +
-      "e\022\021.SubscribeRequest\032\r.Notification\"\0000\001B" +
-      "\025Z\023grpc/weatherserviceb\006proto3"
+      "\n\025weather-service.proto\"\016\n\014ValueRequest\"" +
+      "\037\n\rValueResponse\022\016\n\006values\030\001 \003(\t\"!\n\005Rang" +
+      "e\022\013\n\003min\030\001 \001(\005\022\013\n\003max\030\002 \001(\005\"-\n\006Factor\022\014\n" +
+      "\004name\030\001 \001(\t\022\025\n\005range\030\002 \001(\0132\006.Range\"<\n\020Su" +
+      "bscribeRequest\022\016\n\006cities\030\001 \003(\t\022\030\n\007factor" +
+      "s\030\002 \003(\0132\007.Factor\"k\n\014Notification\022 \n\004type" +
+      "\030\001 \001(\0162\022.Notification.Type\022\017\n\007message\030\002 " +
+      "\001(\t\"(\n\004Type\022\010\n\004TEMP\020\000\022\010\n\004WIND\020\001\022\014\n\010HUMID" +
+      "ITY\020\0022\240\001\n\016WeatherService\022,\n\tgetCities\022\r." +
+      "ValueRequest\032\016.ValueResponse\"\000\022-\n\ngetFac" +
+      "tors\022\r.ValueRequest\032\016.ValueResponse\"\000\0221\n" +
+      "\tsubscribe\022\021.SubscribeRequest\032\r.Notifica" +
+      "tion\"\0000\001B\025Z\023grpc/weatherserviceb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_SubscribeRequest_descriptor =
+    internal_static_ValueRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_ValueRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ValueRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ValueResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_ValueResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ValueResponse_descriptor,
+        new java.lang.String[] { "Values", });
+    internal_static_Range_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_Range_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Range_descriptor,
+        new java.lang.String[] { "Min", "Max", });
+    internal_static_Factor_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_Factor_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Factor_descriptor,
+        new java.lang.String[] { "Name", "Range", });
+    internal_static_SubscribeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_SubscribeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SubscribeRequest_descriptor,
-        new java.lang.String[] { "City", });
+        new java.lang.String[] { "Cities", "Factors", });
     internal_static_Notification_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Notification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Notification_descriptor,
-        new java.lang.String[] { "Message", });
+        new java.lang.String[] { "Type", "Message", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
