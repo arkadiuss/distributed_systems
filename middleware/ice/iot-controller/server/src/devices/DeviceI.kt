@@ -1,12 +1,13 @@
+package devices
+
+import IotController.Device
 import IotController.DeviceInfo
 import IotController.DeviceState
-import IotController.Fridge
 import com.zeroc.Ice.Current
 
-class FridgeI(
-    private val deviceInfo: DeviceInfo,
-    private var temp: Double
-) : Fridge {
+abstract class DeviceI (
+    private val deviceInfo: DeviceInfo
+): Device {
 
     override fun getInfo(current: Current?): DeviceInfo = deviceInfo
 
@@ -16,9 +17,5 @@ class FridgeI(
 
     override fun turnOff(current: Current?) {
         deviceInfo.state = DeviceState.OFF
-    }
-
-    override fun setTemp(temp: Double, current: Current?) {
-        this.temp = temp
     }
 }

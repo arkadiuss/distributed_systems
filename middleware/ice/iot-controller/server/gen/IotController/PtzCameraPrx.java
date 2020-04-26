@@ -15,22 +15,22 @@
 
 package IotController;
 
-public interface RadioPrx extends DevicePrx
+public interface PtzCameraPrx extends CameraPrx
 {
-    default void setVolume(int vol)
+    default void zoomIn()
         throws ArgumentException,
                InvalidOperationException
     {
-        setVolume(vol, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+        zoomIn(com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default void setVolume(int vol, java.util.Map<String, String> context)
+    default void zoomIn(java.util.Map<String, String> context)
         throws ArgumentException,
                InvalidOperationException
     {
         try
         {
-            _iceI_setVolumeAsync(vol, context, true).waitForResponseOrUserEx();
+            _iceI_zoomInAsync(context, true).waitForResponseOrUserEx();
         }
         catch(ArgumentException ex)
         {
@@ -46,53 +46,50 @@ public interface RadioPrx extends DevicePrx
         }
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setVolumeAsync(int vol)
+    default java.util.concurrent.CompletableFuture<Void> zoomInAsync()
     {
-        return _iceI_setVolumeAsync(vol, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+        return _iceI_zoomInAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setVolumeAsync(int vol, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> zoomInAsync(java.util.Map<String, String> context)
     {
-        return _iceI_setVolumeAsync(vol, context, false);
+        return _iceI_zoomInAsync(context, false);
     }
 
     /**
      * @hidden
-     * @param iceP_vol -
      * @param context -
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_setVolumeAsync(int iceP_vol, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_zoomInAsync(java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "setVolume", null, sync, _iceE_setVolume);
-        f.invoke(true, context, null, ostr -> {
-                     ostr.writeInt(iceP_vol);
-                 }, null);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "zoomIn", null, sync, _iceE_zoomIn);
+        f.invoke(true, context, null, null, null);
         return f;
     }
 
     /** @hidden */
-    static final Class<?>[] _iceE_setVolume =
+    static final Class<?>[] _iceE_zoomIn =
     {
         ArgumentException.class,
         InvalidOperationException.class
     };
 
-    default void setFrequency(double freq)
+    default void zoomOut()
         throws ArgumentException,
                InvalidOperationException
     {
-        setFrequency(freq, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+        zoomOut(com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default void setFrequency(double freq, java.util.Map<String, String> context)
+    default void zoomOut(java.util.Map<String, String> context)
         throws ArgumentException,
                InvalidOperationException
     {
         try
         {
-            _iceI_setFrequencyAsync(freq, context, true).waitForResponseOrUserEx();
+            _iceI_zoomOutAsync(context, true).waitForResponseOrUserEx();
         }
         catch(ArgumentException ex)
         {
@@ -108,34 +105,155 @@ public interface RadioPrx extends DevicePrx
         }
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setFrequencyAsync(double freq)
+    default java.util.concurrent.CompletableFuture<Void> zoomOutAsync()
     {
-        return _iceI_setFrequencyAsync(freq, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+        return _iceI_zoomOutAsync(com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<Void> setFrequencyAsync(double freq, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> zoomOutAsync(java.util.Map<String, String> context)
     {
-        return _iceI_setFrequencyAsync(freq, context, false);
+        return _iceI_zoomOutAsync(context, false);
     }
 
     /**
      * @hidden
-     * @param iceP_freq -
      * @param context -
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_setFrequencyAsync(double iceP_freq, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_zoomOutAsync(java.util.Map<String, String> context, boolean sync)
     {
-        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "setFrequency", null, sync, _iceE_setFrequency);
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "zoomOut", null, sync, _iceE_zoomOut);
+        f.invoke(true, context, null, null, null);
+        return f;
+    }
+
+    /** @hidden */
+    static final Class<?>[] _iceE_zoomOut =
+    {
+        ArgumentException.class,
+        InvalidOperationException.class
+    };
+
+    default void tilt(double angle)
+        throws ArgumentException,
+               InvalidOperationException
+    {
+        tilt(angle, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+    }
+
+    default void tilt(double angle, java.util.Map<String, String> context)
+        throws ArgumentException,
+               InvalidOperationException
+    {
+        try
+        {
+            _iceI_tiltAsync(angle, context, true).waitForResponseOrUserEx();
+        }
+        catch(ArgumentException ex)
+        {
+            throw ex;
+        }
+        catch(InvalidOperationException ex)
+        {
+            throw ex;
+        }
+        catch(com.zeroc.Ice.UserException ex)
+        {
+            throw new com.zeroc.Ice.UnknownUserException(ex.ice_id(), ex);
+        }
+    }
+
+    default java.util.concurrent.CompletableFuture<Void> tiltAsync(double angle)
+    {
+        return _iceI_tiltAsync(angle, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+    }
+
+    default java.util.concurrent.CompletableFuture<Void> tiltAsync(double angle, java.util.Map<String, String> context)
+    {
+        return _iceI_tiltAsync(angle, context, false);
+    }
+
+    /**
+     * @hidden
+     * @param iceP_angle -
+     * @param context -
+     * @param sync -
+     * @return -
+     **/
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_tiltAsync(double iceP_angle, java.util.Map<String, String> context, boolean sync)
+    {
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "tilt", null, sync, _iceE_tilt);
         f.invoke(true, context, null, ostr -> {
-                     ostr.writeDouble(iceP_freq);
+                     ostr.writeDouble(iceP_angle);
                  }, null);
         return f;
     }
 
     /** @hidden */
-    static final Class<?>[] _iceE_setFrequency =
+    static final Class<?>[] _iceE_tilt =
+    {
+        ArgumentException.class,
+        InvalidOperationException.class
+    };
+
+    default void pan(double angle)
+        throws ArgumentException,
+               InvalidOperationException
+    {
+        pan(angle, com.zeroc.Ice.ObjectPrx.noExplicitContext);
+    }
+
+    default void pan(double angle, java.util.Map<String, String> context)
+        throws ArgumentException,
+               InvalidOperationException
+    {
+        try
+        {
+            _iceI_panAsync(angle, context, true).waitForResponseOrUserEx();
+        }
+        catch(ArgumentException ex)
+        {
+            throw ex;
+        }
+        catch(InvalidOperationException ex)
+        {
+            throw ex;
+        }
+        catch(com.zeroc.Ice.UserException ex)
+        {
+            throw new com.zeroc.Ice.UnknownUserException(ex.ice_id(), ex);
+        }
+    }
+
+    default java.util.concurrent.CompletableFuture<Void> panAsync(double angle)
+    {
+        return _iceI_panAsync(angle, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
+    }
+
+    default java.util.concurrent.CompletableFuture<Void> panAsync(double angle, java.util.Map<String, String> context)
+    {
+        return _iceI_panAsync(angle, context, false);
+    }
+
+    /**
+     * @hidden
+     * @param iceP_angle -
+     * @param context -
+     * @param sync -
+     * @return -
+     **/
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_panAsync(double iceP_angle, java.util.Map<String, String> context, boolean sync)
+    {
+        com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "pan", null, sync, _iceE_pan);
+        f.invoke(true, context, null, ostr -> {
+                     ostr.writeDouble(iceP_angle);
+                 }, null);
+        return f;
+    }
+
+    /** @hidden */
+    static final Class<?>[] _iceE_pan =
     {
         ArgumentException.class,
         InvalidOperationException.class
@@ -147,9 +265,9 @@ public interface RadioPrx extends DevicePrx
      * @param obj The untyped proxy.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static RadioPrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
+    static PtzCameraPrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -159,9 +277,9 @@ public interface RadioPrx extends DevicePrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static RadioPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
+    static PtzCameraPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -171,9 +289,9 @@ public interface RadioPrx extends DevicePrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static RadioPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static PtzCameraPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -184,9 +302,9 @@ public interface RadioPrx extends DevicePrx
      * @param context The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
-    static RadioPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
+    static PtzCameraPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
     {
-        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -194,9 +312,9 @@ public interface RadioPrx extends DevicePrx
      * @param obj The untyped proxy.
      * @return A proxy for this type.
      **/
-    static RadioPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
+    static PtzCameraPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -205,9 +323,9 @@ public interface RadioPrx extends DevicePrx
      * @param facet The name of the desired facet.
      * @return A proxy for this type.
      **/
-    static RadioPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
+    static PtzCameraPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, RadioPrx.class, _RadioPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, PtzCameraPrx.class, _PtzCameraPrxI.class);
     }
 
     /**
@@ -216,9 +334,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified per-proxy context.
      **/
     @Override
-    default RadioPrx ice_context(java.util.Map<String, String> newContext)
+    default PtzCameraPrx ice_context(java.util.Map<String, String> newContext)
     {
-        return (RadioPrx)_ice_context(newContext);
+        return (PtzCameraPrx)_ice_context(newContext);
     }
 
     /**
@@ -227,9 +345,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified adapter ID.
      **/
     @Override
-    default RadioPrx ice_adapterId(String newAdapterId)
+    default PtzCameraPrx ice_adapterId(String newAdapterId)
     {
-        return (RadioPrx)_ice_adapterId(newAdapterId);
+        return (PtzCameraPrx)_ice_adapterId(newAdapterId);
     }
 
     /**
@@ -238,9 +356,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified endpoints.
      **/
     @Override
-    default RadioPrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
+    default PtzCameraPrx ice_endpoints(com.zeroc.Ice.Endpoint[] newEndpoints)
     {
-        return (RadioPrx)_ice_endpoints(newEndpoints);
+        return (PtzCameraPrx)_ice_endpoints(newEndpoints);
     }
 
     /**
@@ -249,9 +367,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified locator cache timeout.
      **/
     @Override
-    default RadioPrx ice_locatorCacheTimeout(int newTimeout)
+    default PtzCameraPrx ice_locatorCacheTimeout(int newTimeout)
     {
-        return (RadioPrx)_ice_locatorCacheTimeout(newTimeout);
+        return (PtzCameraPrx)_ice_locatorCacheTimeout(newTimeout);
     }
 
     /**
@@ -260,9 +378,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified invocation timeout.
      **/
     @Override
-    default RadioPrx ice_invocationTimeout(int newTimeout)
+    default PtzCameraPrx ice_invocationTimeout(int newTimeout)
     {
-        return (RadioPrx)_ice_invocationTimeout(newTimeout);
+        return (PtzCameraPrx)_ice_invocationTimeout(newTimeout);
     }
 
     /**
@@ -271,9 +389,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified caching policy.
      **/
     @Override
-    default RadioPrx ice_connectionCached(boolean newCache)
+    default PtzCameraPrx ice_connectionCached(boolean newCache)
     {
-        return (RadioPrx)_ice_connectionCached(newCache);
+        return (PtzCameraPrx)_ice_connectionCached(newCache);
     }
 
     /**
@@ -282,9 +400,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified endpoint selection policy.
      **/
     @Override
-    default RadioPrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
+    default PtzCameraPrx ice_endpointSelection(com.zeroc.Ice.EndpointSelectionType newType)
     {
-        return (RadioPrx)_ice_endpointSelection(newType);
+        return (PtzCameraPrx)_ice_endpointSelection(newType);
     }
 
     /**
@@ -295,9 +413,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default RadioPrx ice_secure(boolean b)
+    default PtzCameraPrx ice_secure(boolean b)
     {
-        return (RadioPrx)_ice_secure(b);
+        return (PtzCameraPrx)_ice_secure(b);
     }
 
     /**
@@ -306,9 +424,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified encoding version.
      **/
     @Override
-    default RadioPrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
+    default PtzCameraPrx ice_encodingVersion(com.zeroc.Ice.EncodingVersion e)
     {
-        return (RadioPrx)_ice_encodingVersion(e);
+        return (PtzCameraPrx)_ice_encodingVersion(e);
     }
 
     /**
@@ -319,9 +437,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified selection policy.
      **/
     @Override
-    default RadioPrx ice_preferSecure(boolean b)
+    default PtzCameraPrx ice_preferSecure(boolean b)
     {
-        return (RadioPrx)_ice_preferSecure(b);
+        return (PtzCameraPrx)_ice_preferSecure(b);
     }
 
     /**
@@ -330,9 +448,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified router.
      **/
     @Override
-    default RadioPrx ice_router(com.zeroc.Ice.RouterPrx router)
+    default PtzCameraPrx ice_router(com.zeroc.Ice.RouterPrx router)
     {
-        return (RadioPrx)_ice_router(router);
+        return (PtzCameraPrx)_ice_router(router);
     }
 
     /**
@@ -341,9 +459,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified locator.
      **/
     @Override
-    default RadioPrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
+    default PtzCameraPrx ice_locator(com.zeroc.Ice.LocatorPrx locator)
     {
-        return (RadioPrx)_ice_locator(locator);
+        return (PtzCameraPrx)_ice_locator(locator);
     }
 
     /**
@@ -352,9 +470,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified collocation optimization.
      **/
     @Override
-    default RadioPrx ice_collocationOptimized(boolean b)
+    default PtzCameraPrx ice_collocationOptimized(boolean b)
     {
-        return (RadioPrx)_ice_collocationOptimized(b);
+        return (PtzCameraPrx)_ice_collocationOptimized(b);
     }
 
     /**
@@ -362,9 +480,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy that uses twoway invocations.
      **/
     @Override
-    default RadioPrx ice_twoway()
+    default PtzCameraPrx ice_twoway()
     {
-        return (RadioPrx)_ice_twoway();
+        return (PtzCameraPrx)_ice_twoway();
     }
 
     /**
@@ -372,9 +490,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy that uses oneway invocations.
      **/
     @Override
-    default RadioPrx ice_oneway()
+    default PtzCameraPrx ice_oneway()
     {
-        return (RadioPrx)_ice_oneway();
+        return (PtzCameraPrx)_ice_oneway();
     }
 
     /**
@@ -382,9 +500,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy that uses batch oneway invocations.
      **/
     @Override
-    default RadioPrx ice_batchOneway()
+    default PtzCameraPrx ice_batchOneway()
     {
-        return (RadioPrx)_ice_batchOneway();
+        return (PtzCameraPrx)_ice_batchOneway();
     }
 
     /**
@@ -392,9 +510,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy that uses datagram invocations.
      **/
     @Override
-    default RadioPrx ice_datagram()
+    default PtzCameraPrx ice_datagram()
     {
-        return (RadioPrx)_ice_datagram();
+        return (PtzCameraPrx)_ice_datagram();
     }
 
     /**
@@ -402,9 +520,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy that uses batch datagram invocations.
      **/
     @Override
-    default RadioPrx ice_batchDatagram()
+    default PtzCameraPrx ice_batchDatagram()
     {
-        return (RadioPrx)_ice_batchDatagram();
+        return (PtzCameraPrx)_ice_batchDatagram();
     }
 
     /**
@@ -413,9 +531,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified compression setting.
      **/
     @Override
-    default RadioPrx ice_compress(boolean co)
+    default PtzCameraPrx ice_compress(boolean co)
     {
-        return (RadioPrx)_ice_compress(co);
+        return (PtzCameraPrx)_ice_compress(co);
     }
 
     /**
@@ -424,9 +542,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified timeout.
      **/
     @Override
-    default RadioPrx ice_timeout(int t)
+    default PtzCameraPrx ice_timeout(int t)
     {
-        return (RadioPrx)_ice_timeout(t);
+        return (PtzCameraPrx)_ice_timeout(t);
     }
 
     /**
@@ -435,9 +553,9 @@ public interface RadioPrx extends DevicePrx
      * @return A proxy with the specified connection ID.
      **/
     @Override
-    default RadioPrx ice_connectionId(String connectionId)
+    default PtzCameraPrx ice_connectionId(String connectionId)
     {
-        return (RadioPrx)_ice_connectionId(connectionId);
+        return (PtzCameraPrx)_ice_connectionId(connectionId);
     }
 
     /**
@@ -446,13 +564,13 @@ public interface RadioPrx extends DevicePrx
      * @return A fixed proxy bound to the given connection.
      **/
     @Override
-    default RadioPrx ice_fixed(com.zeroc.Ice.Connection connection)
+    default PtzCameraPrx ice_fixed(com.zeroc.Ice.Connection connection)
     {
-        return (RadioPrx)_ice_fixed(connection);
+        return (PtzCameraPrx)_ice_fixed(connection);
     }
 
     static String ice_staticId()
     {
-        return "::IotController::Radio";
+        return "::IotController::PtzCamera";
     }
 }

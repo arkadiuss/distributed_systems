@@ -45,33 +45,138 @@ if 'DeviceState' not in _M_IotController.__dict__:
 
 if 'DeviceInfo' not in _M_IotController.__dict__:
     _M_IotController.DeviceInfo = Ice.createTempClass()
-    class DeviceInfo(object):
+    class DeviceInfo(Ice.Value):
         def __init__(self, id=0, name='', state=_M_IotController.DeviceState.ON):
             self.id = id
             self.name = name
             self.state = state
 
+        def ice_id(self):
+            return '::IotController::DeviceInfo'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::DeviceInfo'
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_DeviceInfo)
+
+        __repr__ = __str__
+
+    _M_IotController._t_DeviceInfo = IcePy.defineValue('::IotController::DeviceInfo', DeviceInfo, -1, (), False, False, None, (
+        ('id', (), IcePy._t_int, False, 0),
+        ('name', (), IcePy._t_string, False, 0),
+        ('state', (), _M_IotController._t_DeviceState, False, 0)
+    ))
+    DeviceInfo._ice_type = _M_IotController._t_DeviceInfo
+
+    _M_IotController.DeviceInfo = DeviceInfo
+    del DeviceInfo
+
+if 'RadioInfo' not in _M_IotController.__dict__:
+    _M_IotController.RadioInfo = Ice.createTempClass()
+    class RadioInfo(_M_IotController.DeviceInfo):
+        def __init__(self, id=0, name='', state=_M_IotController.DeviceState.ON, frequency=0.0, volume=0):
+            _M_IotController.DeviceInfo.__init__(self, id, name, state)
+            self.frequency = frequency
+            self.volume = volume
+
+        def ice_id(self):
+            return '::IotController::RadioInfo'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::RadioInfo'
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_RadioInfo)
+
+        __repr__ = __str__
+
+    _M_IotController._t_RadioInfo = IcePy.defineValue('::IotController::RadioInfo', RadioInfo, -1, (), False, False, _M_IotController._t_DeviceInfo, (
+        ('frequency', (), IcePy._t_double, False, 0),
+        ('volume', (), IcePy._t_int, False, 0)
+    ))
+    RadioInfo._ice_type = _M_IotController._t_RadioInfo
+
+    _M_IotController.RadioInfo = RadioInfo
+    del RadioInfo
+
+if 'PtzCameraInfo' not in _M_IotController.__dict__:
+    _M_IotController.PtzCameraInfo = Ice.createTempClass()
+    class PtzCameraInfo(_M_IotController.DeviceInfo):
+        def __init__(self, id=0, name='', state=_M_IotController.DeviceState.ON, zoom=0, panAngle=0.0, tiltAngle=0.0):
+            _M_IotController.DeviceInfo.__init__(self, id, name, state)
+            self.zoom = zoom
+            self.panAngle = panAngle
+            self.tiltAngle = tiltAngle
+
+        def ice_id(self):
+            return '::IotController::PtzCameraInfo'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::PtzCameraInfo'
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_PtzCameraInfo)
+
+        __repr__ = __str__
+
+    _M_IotController._t_PtzCameraInfo = IcePy.defineValue('::IotController::PtzCameraInfo', PtzCameraInfo, -1, (), False, False, _M_IotController._t_DeviceInfo, (
+        ('zoom', (), IcePy._t_int, False, 0),
+        ('panAngle', (), IcePy._t_double, False, 0),
+        ('tiltAngle', (), IcePy._t_double, False, 0)
+    ))
+    PtzCameraInfo._ice_type = _M_IotController._t_PtzCameraInfo
+
+    _M_IotController.PtzCameraInfo = PtzCameraInfo
+    del PtzCameraInfo
+
+if 'FridgeInfo' not in _M_IotController.__dict__:
+    _M_IotController.FridgeInfo = Ice.createTempClass()
+    class FridgeInfo(_M_IotController.DeviceInfo):
+        def __init__(self, id=0, name='', state=_M_IotController.DeviceState.ON, temp=0.0):
+            _M_IotController.DeviceInfo.__init__(self, id, name, state)
+            self.temp = temp
+
+        def ice_id(self):
+            return '::IotController::FridgeInfo'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::FridgeInfo'
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_FridgeInfo)
+
+        __repr__ = __str__
+
+    _M_IotController._t_FridgeInfo = IcePy.defineValue('::IotController::FridgeInfo', FridgeInfo, -1, (), False, False, _M_IotController._t_DeviceInfo, (('temp', (), IcePy._t_double, False, 0),))
+    FridgeInfo._ice_type = _M_IotController._t_FridgeInfo
+
+    _M_IotController.FridgeInfo = FridgeInfo
+    del FridgeInfo
+
+if 'Item' not in _M_IotController.__dict__:
+    _M_IotController.Item = Ice.createTempClass()
+    class Item(object):
+        def __init__(self, name='', quantity=0):
+            self.name = name
+            self.quantity = quantity
+
         def __hash__(self):
             _h = 0
-            _h = 5 * _h + Ice.getHash(self.id)
             _h = 5 * _h + Ice.getHash(self.name)
-            _h = 5 * _h + Ice.getHash(self.state)
+            _h = 5 * _h + Ice.getHash(self.quantity)
             return _h % 0x7fffffff
 
         def __compare(self, other):
             if other is None:
                 return 1
-            elif not isinstance(other, _M_IotController.DeviceInfo):
+            elif not isinstance(other, _M_IotController.Item):
                 return NotImplemented
             else:
-                if self.id is None or other.id is None:
-                    if self.id != other.id:
-                        return (-1 if self.id is None else 1)
-                else:
-                    if self.id < other.id:
-                        return -1
-                    elif self.id > other.id:
-                        return 1
                 if self.name is None or other.name is None:
                     if self.name != other.name:
                         return (-1 if self.name is None else 1)
@@ -80,13 +185,13 @@ if 'DeviceInfo' not in _M_IotController.__dict__:
                         return -1
                     elif self.name > other.name:
                         return 1
-                if self.state is None or other.state is None:
-                    if self.state != other.state:
-                        return (-1 if self.state is None else 1)
+                if self.quantity is None or other.quantity is None:
+                    if self.quantity != other.quantity:
+                        return (-1 if self.quantity is None else 1)
                 else:
-                    if self.state < other.state:
+                    if self.quantity < other.quantity:
                         return -1
-                    elif self.state > other.state:
+                    elif self.quantity > other.quantity:
                         return 1
                 return 0
 
@@ -133,24 +238,48 @@ if 'DeviceInfo' not in _M_IotController.__dict__:
                 return r != 0
 
         def __str__(self):
-            return IcePy.stringify(self, _M_IotController._t_DeviceInfo)
+            return IcePy.stringify(self, _M_IotController._t_Item)
 
         __repr__ = __str__
 
-    _M_IotController._t_DeviceInfo = IcePy.defineStruct('::IotController::DeviceInfo', DeviceInfo, (), (
-        ('id', (), IcePy._t_int),
+    _M_IotController._t_Item = IcePy.defineStruct('::IotController::Item', Item, (), (
         ('name', (), IcePy._t_string),
-        ('state', (), _M_IotController._t_DeviceState)
+        ('quantity', (), IcePy._t_int)
     ))
 
-    _M_IotController.DeviceInfo = DeviceInfo
-    del DeviceInfo
+    _M_IotController.Item = Item
+    del Item
+
+if '_t_Items' not in _M_IotController.__dict__:
+    _M_IotController._t_Items = IcePy.defineSequence('::IotController::Items', (), _M_IotController._t_Item)
+
+if '_t_Bytes' not in _M_IotController.__dict__:
+    _M_IotController._t_Bytes = IcePy.defineSequence('::IotController::Bytes', (), IcePy._t_byte)
+
+if 'BaseException' not in _M_IotController.__dict__:
+    _M_IotController.BaseException = Ice.createTempClass()
+    class BaseException(Ice.UserException):
+        def __init__(self, message=''):
+            self.message = message
+
+        def __str__(self):
+            return IcePy.stringifyException(self)
+
+        __repr__ = __str__
+
+        _ice_id = '::IotController::BaseException'
+
+    _M_IotController._t_BaseException = IcePy.defineException('::IotController::BaseException', BaseException, (), False, None, (('message', (), IcePy._t_string, False, 0),))
+    BaseException._ice_type = _M_IotController._t_BaseException
+
+    _M_IotController.BaseException = BaseException
+    del BaseException
 
 if 'ArgumentException' not in _M_IotController.__dict__:
     _M_IotController.ArgumentException = Ice.createTempClass()
-    class ArgumentException(Ice.UserException):
-        def __init__(self):
-            pass
+    class ArgumentException(_M_IotController.BaseException):
+        def __init__(self, message=''):
+            _M_IotController.BaseException.__init__(self, message)
 
         def __str__(self):
             return IcePy.stringifyException(self)
@@ -159,11 +288,30 @@ if 'ArgumentException' not in _M_IotController.__dict__:
 
         _ice_id = '::IotController::ArgumentException'
 
-    _M_IotController._t_ArgumentException = IcePy.defineException('::IotController::ArgumentException', ArgumentException, (), False, None, ())
+    _M_IotController._t_ArgumentException = IcePy.defineException('::IotController::ArgumentException', ArgumentException, (), False, _M_IotController._t_BaseException, ())
     ArgumentException._ice_type = _M_IotController._t_ArgumentException
 
     _M_IotController.ArgumentException = ArgumentException
     del ArgumentException
+
+if 'InvalidOperationException' not in _M_IotController.__dict__:
+    _M_IotController.InvalidOperationException = Ice.createTempClass()
+    class InvalidOperationException(_M_IotController.BaseException):
+        def __init__(self, message=''):
+            _M_IotController.BaseException.__init__(self, message)
+
+        def __str__(self):
+            return IcePy.stringifyException(self)
+
+        __repr__ = __str__
+
+        _ice_id = '::IotController::InvalidOperationException'
+
+    _M_IotController._t_InvalidOperationException = IcePy.defineException('::IotController::InvalidOperationException', InvalidOperationException, (), False, _M_IotController._t_BaseException, ())
+    InvalidOperationException._ice_type = _M_IotController._t_InvalidOperationException
+
+    _M_IotController.InvalidOperationException = InvalidOperationException
+    del InvalidOperationException
 
 _M_IotController._t_Device = IcePy.defineValue('::IotController::Device', Ice.Value, -1, (), False, True, None, ())
 
@@ -333,11 +481,248 @@ if 'RadioPrx' not in _M_IotController.__dict__:
     _M_IotController._t_RadioDisp = IcePy.defineClass('::IotController::Radio', Radio, (), None, (_M_IotController._t_DeviceDisp,))
     Radio._ice_type = _M_IotController._t_RadioDisp
 
-    Radio._op_setVolume = IcePy.Operation('setVolume', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0),), (), None, (_M_IotController._t_ArgumentException,))
-    Radio._op_setFrequency = IcePy.Operation('setFrequency', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException,))
+    Radio._op_setVolume = IcePy.Operation('setVolume', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0),), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+    Radio._op_setFrequency = IcePy.Operation('setFrequency', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
 
     _M_IotController.Radio = Radio
     del Radio
+
+_M_IotController._t_Camera = IcePy.defineValue('::IotController::Camera', Ice.Value, -1, (), False, True, None, ())
+
+if 'CameraPrx' not in _M_IotController.__dict__:
+    _M_IotController.CameraPrx = Ice.createTempClass()
+    class CameraPrx(_M_IotController.DevicePrx):
+
+        def takePicture(self, context=None):
+            return _M_IotController.Camera._op_takePicture.invoke(self, ((), context))
+
+        def takePictureAsync(self, context=None):
+            return _M_IotController.Camera._op_takePicture.invokeAsync(self, ((), context))
+
+        def begin_takePicture(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.Camera._op_takePicture.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_takePicture(self, _r):
+            return _M_IotController.Camera._op_takePicture.end(self, _r)
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_IotController.CameraPrx.ice_checkedCast(proxy, '::IotController::Camera', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_IotController.CameraPrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::Camera'
+    _M_IotController._t_CameraPrx = IcePy.defineProxy('::IotController::Camera', CameraPrx)
+
+    _M_IotController.CameraPrx = CameraPrx
+    del CameraPrx
+
+    _M_IotController.Camera = Ice.createTempClass()
+    class Camera(_M_IotController.Device):
+
+        def ice_ids(self, current=None):
+            return ('::Ice::Object', '::IotController::Camera', '::IotController::Device')
+
+        def ice_id(self, current=None):
+            return '::IotController::Camera'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::Camera'
+
+        def takePicture(self, current=None):
+            raise NotImplementedError("servant method 'takePicture' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_CameraDisp)
+
+        __repr__ = __str__
+
+    _M_IotController._t_CameraDisp = IcePy.defineClass('::IotController::Camera', Camera, (), None, (_M_IotController._t_DeviceDisp,))
+    Camera._ice_type = _M_IotController._t_CameraDisp
+
+    Camera._op_takePicture = IcePy.Operation('takePicture', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), ((), _M_IotController._t_Bytes, False, 0), ())
+
+    _M_IotController.Camera = Camera
+    del Camera
+
+_M_IotController._t_PtzCamera = IcePy.defineValue('::IotController::PtzCamera', Ice.Value, -1, (), False, True, None, ())
+
+if 'PtzCameraPrx' not in _M_IotController.__dict__:
+    _M_IotController.PtzCameraPrx = Ice.createTempClass()
+    class PtzCameraPrx(_M_IotController.CameraPrx):
+
+        def zoomIn(self, context=None):
+            return _M_IotController.PtzCamera._op_zoomIn.invoke(self, ((), context))
+
+        def zoomInAsync(self, context=None):
+            return _M_IotController.PtzCamera._op_zoomIn.invokeAsync(self, ((), context))
+
+        def begin_zoomIn(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.PtzCamera._op_zoomIn.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_zoomIn(self, _r):
+            return _M_IotController.PtzCamera._op_zoomIn.end(self, _r)
+
+        def zoomOut(self, context=None):
+            return _M_IotController.PtzCamera._op_zoomOut.invoke(self, ((), context))
+
+        def zoomOutAsync(self, context=None):
+            return _M_IotController.PtzCamera._op_zoomOut.invokeAsync(self, ((), context))
+
+        def begin_zoomOut(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.PtzCamera._op_zoomOut.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_zoomOut(self, _r):
+            return _M_IotController.PtzCamera._op_zoomOut.end(self, _r)
+
+        def tilt(self, angle, context=None):
+            return _M_IotController.PtzCamera._op_tilt.invoke(self, ((angle, ), context))
+
+        def tiltAsync(self, angle, context=None):
+            return _M_IotController.PtzCamera._op_tilt.invokeAsync(self, ((angle, ), context))
+
+        def begin_tilt(self, angle, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.PtzCamera._op_tilt.begin(self, ((angle, ), _response, _ex, _sent, context))
+
+        def end_tilt(self, _r):
+            return _M_IotController.PtzCamera._op_tilt.end(self, _r)
+
+        def pan(self, angle, context=None):
+            return _M_IotController.PtzCamera._op_pan.invoke(self, ((angle, ), context))
+
+        def panAsync(self, angle, context=None):
+            return _M_IotController.PtzCamera._op_pan.invokeAsync(self, ((angle, ), context))
+
+        def begin_pan(self, angle, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.PtzCamera._op_pan.begin(self, ((angle, ), _response, _ex, _sent, context))
+
+        def end_pan(self, _r):
+            return _M_IotController.PtzCamera._op_pan.end(self, _r)
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_IotController.PtzCameraPrx.ice_checkedCast(proxy, '::IotController::PtzCamera', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_IotController.PtzCameraPrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::PtzCamera'
+    _M_IotController._t_PtzCameraPrx = IcePy.defineProxy('::IotController::PtzCamera', PtzCameraPrx)
+
+    _M_IotController.PtzCameraPrx = PtzCameraPrx
+    del PtzCameraPrx
+
+    _M_IotController.PtzCamera = Ice.createTempClass()
+    class PtzCamera(_M_IotController.Camera):
+
+        def ice_ids(self, current=None):
+            return ('::Ice::Object', '::IotController::Camera', '::IotController::Device', '::IotController::PtzCamera')
+
+        def ice_id(self, current=None):
+            return '::IotController::PtzCamera'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::PtzCamera'
+
+        def zoomIn(self, current=None):
+            raise NotImplementedError("servant method 'zoomIn' not implemented")
+
+        def zoomOut(self, current=None):
+            raise NotImplementedError("servant method 'zoomOut' not implemented")
+
+        def tilt(self, angle, current=None):
+            raise NotImplementedError("servant method 'tilt' not implemented")
+
+        def pan(self, angle, current=None):
+            raise NotImplementedError("servant method 'pan' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_PtzCameraDisp)
+
+        __repr__ = __str__
+
+    _M_IotController._t_PtzCameraDisp = IcePy.defineClass('::IotController::PtzCamera', PtzCamera, (), None, (_M_IotController._t_CameraDisp,))
+    PtzCamera._ice_type = _M_IotController._t_PtzCameraDisp
+
+    PtzCamera._op_zoomIn = IcePy.Operation('zoomIn', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+    PtzCamera._op_zoomOut = IcePy.Operation('zoomOut', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+    PtzCamera._op_tilt = IcePy.Operation('tilt', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+    PtzCamera._op_pan = IcePy.Operation('pan', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+
+    _M_IotController.PtzCamera = PtzCamera
+    del PtzCamera
+
+_M_IotController._t_AICamera = IcePy.defineValue('::IotController::AICamera', Ice.Value, -1, (), False, True, None, ())
+
+if 'AICameraPrx' not in _M_IotController.__dict__:
+    _M_IotController.AICameraPrx = Ice.createTempClass()
+    class AICameraPrx(_M_IotController.CameraPrx):
+
+        def detectCats(self, context=None):
+            return _M_IotController.AICamera._op_detectCats.invoke(self, ((), context))
+
+        def detectCatsAsync(self, context=None):
+            return _M_IotController.AICamera._op_detectCats.invokeAsync(self, ((), context))
+
+        def begin_detectCats(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.AICamera._op_detectCats.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_detectCats(self, _r):
+            return _M_IotController.AICamera._op_detectCats.end(self, _r)
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_IotController.AICameraPrx.ice_checkedCast(proxy, '::IotController::AICamera', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_IotController.AICameraPrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::AICamera'
+    _M_IotController._t_AICameraPrx = IcePy.defineProxy('::IotController::AICamera', AICameraPrx)
+
+    _M_IotController.AICameraPrx = AICameraPrx
+    del AICameraPrx
+
+    _M_IotController.AICamera = Ice.createTempClass()
+    class AICamera(_M_IotController.Camera):
+
+        def ice_ids(self, current=None):
+            return ('::Ice::Object', '::IotController::AICamera', '::IotController::Camera', '::IotController::Device')
+
+        def ice_id(self, current=None):
+            return '::IotController::AICamera'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::AICamera'
+
+        def detectCats(self, current=None):
+            raise NotImplementedError("servant method 'detectCats' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_AICameraDisp)
+
+        __repr__ = __str__
+
+    _M_IotController._t_AICameraDisp = IcePy.defineClass('::IotController::AICamera', AICamera, (), None, (_M_IotController._t_CameraDisp,))
+    AICamera._ice_type = _M_IotController._t_AICameraDisp
+
+    AICamera._op_detectCats = IcePy.Operation('detectCats', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), ((), IcePy._t_bool, False, 0), ())
+
+    _M_IotController.AICamera = AICamera
+    del AICamera
 
 _M_IotController._t_Fridge = IcePy.defineValue('::IotController::Fridge', Ice.Value, -1, (), False, True, None, ())
 
@@ -397,9 +782,104 @@ if 'FridgePrx' not in _M_IotController.__dict__:
     _M_IotController._t_FridgeDisp = IcePy.defineClass('::IotController::Fridge', Fridge, (), None, (_M_IotController._t_DeviceDisp,))
     Fridge._ice_type = _M_IotController._t_FridgeDisp
 
-    Fridge._op_setTemp = IcePy.Operation('setTemp', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException,))
+    Fridge._op_setTemp = IcePy.Operation('setTemp', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_double, False, 0),), (), None, (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
 
     _M_IotController.Fridge = Fridge
     del Fridge
+
+_M_IotController._t_SmartFridge = IcePy.defineValue('::IotController::SmartFridge', Ice.Value, -1, (), False, True, None, ())
+
+if 'SmartFridgePrx' not in _M_IotController.__dict__:
+    _M_IotController.SmartFridgePrx = Ice.createTempClass()
+    class SmartFridgePrx(_M_IotController.FridgePrx):
+
+        def addRecipe(self, name, ingredients, context=None):
+            return _M_IotController.SmartFridge._op_addRecipe.invoke(self, ((name, ingredients), context))
+
+        def addRecipeAsync(self, name, ingredients, context=None):
+            return _M_IotController.SmartFridge._op_addRecipe.invokeAsync(self, ((name, ingredients), context))
+
+        def begin_addRecipe(self, name, ingredients, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.SmartFridge._op_addRecipe.begin(self, ((name, ingredients), _response, _ex, _sent, context))
+
+        def end_addRecipe(self, _r):
+            return _M_IotController.SmartFridge._op_addRecipe.end(self, _r)
+
+        def whatINeedFor(self, name, context=None):
+            return _M_IotController.SmartFridge._op_whatINeedFor.invoke(self, ((name, ), context))
+
+        def whatINeedForAsync(self, name, context=None):
+            return _M_IotController.SmartFridge._op_whatINeedFor.invokeAsync(self, ((name, ), context))
+
+        def begin_whatINeedFor(self, name, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.SmartFridge._op_whatINeedFor.begin(self, ((name, ), _response, _ex, _sent, context))
+
+        def end_whatINeedFor(self, _r):
+            return _M_IotController.SmartFridge._op_whatINeedFor.end(self, _r)
+
+        def getCurrentItems(self, context=None):
+            return _M_IotController.SmartFridge._op_getCurrentItems.invoke(self, ((), context))
+
+        def getCurrentItemsAsync(self, context=None):
+            return _M_IotController.SmartFridge._op_getCurrentItems.invokeAsync(self, ((), context))
+
+        def begin_getCurrentItems(self, _response=None, _ex=None, _sent=None, context=None):
+            return _M_IotController.SmartFridge._op_getCurrentItems.begin(self, ((), _response, _ex, _sent, context))
+
+        def end_getCurrentItems(self, _r):
+            return _M_IotController.SmartFridge._op_getCurrentItems.end(self, _r)
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_IotController.SmartFridgePrx.ice_checkedCast(proxy, '::IotController::SmartFridge', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_IotController.SmartFridgePrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::SmartFridge'
+    _M_IotController._t_SmartFridgePrx = IcePy.defineProxy('::IotController::SmartFridge', SmartFridgePrx)
+
+    _M_IotController.SmartFridgePrx = SmartFridgePrx
+    del SmartFridgePrx
+
+    _M_IotController.SmartFridge = Ice.createTempClass()
+    class SmartFridge(_M_IotController.Fridge):
+
+        def ice_ids(self, current=None):
+            return ('::Ice::Object', '::IotController::Device', '::IotController::Fridge', '::IotController::SmartFridge')
+
+        def ice_id(self, current=None):
+            return '::IotController::SmartFridge'
+
+        @staticmethod
+        def ice_staticId():
+            return '::IotController::SmartFridge'
+
+        def addRecipe(self, name, ingredients, current=None):
+            raise NotImplementedError("servant method 'addRecipe' not implemented")
+
+        def whatINeedFor(self, name, current=None):
+            raise NotImplementedError("servant method 'whatINeedFor' not implemented")
+
+        def getCurrentItems(self, current=None):
+            raise NotImplementedError("servant method 'getCurrentItems' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_IotController._t_SmartFridgeDisp)
+
+        __repr__ = __str__
+
+    _M_IotController._t_SmartFridgeDisp = IcePy.defineClass('::IotController::SmartFridge', SmartFridge, (), None, (_M_IotController._t_FridgeDisp,))
+    SmartFridge._ice_type = _M_IotController._t_SmartFridgeDisp
+
+    SmartFridge._op_addRecipe = IcePy.Operation('addRecipe', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), _M_IotController._t_Items, False, 0)), (), None, ())
+    SmartFridge._op_whatINeedFor = IcePy.Operation('whatINeedFor', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), ((), _M_IotController._t_Items, False, 0), (_M_IotController._t_ArgumentException,))
+    SmartFridge._op_getCurrentItems = IcePy.Operation('getCurrentItems', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (), (), ((), _M_IotController._t_Items, False, 0), (_M_IotController._t_ArgumentException, _M_IotController._t_InvalidOperationException))
+
+    _M_IotController.SmartFridge = SmartFridge
+    del SmartFridge
 
 # End of module IotController

@@ -60,7 +60,8 @@ public interface Device extends com.zeroc.Ice.Object
         inS.readEmptyParams();
         DeviceInfo ret = obj.getInfo(current);
         com.zeroc.Ice.OutputStream ostr = inS.startWriteParams();
-        DeviceInfo.ice_write(ostr, ret);
+        ostr.writeValue(ret);
+        ostr.writePendingValues();
         inS.endWriteParams(ostr);
         return inS.setResult(ostr);
     }

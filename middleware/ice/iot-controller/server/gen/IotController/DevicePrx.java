@@ -47,9 +47,10 @@ public interface DevicePrx extends com.zeroc.Ice.ObjectPrx
     {
         com.zeroc.IceInternal.OutgoingAsync<DeviceInfo> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "getInfo", null, sync, null);
         f.invoke(true, context, null, null, istr -> {
-                     DeviceInfo ret;
-                     ret = DeviceInfo.ice_read(istr);
-                     return ret;
+                     final com.zeroc.IceInternal.Holder<DeviceInfo> ret = new com.zeroc.IceInternal.Holder<>();
+                     istr.readValue(v -> ret.value = v, DeviceInfo.class);
+                     istr.readPendingValues();
+                     return ret.value;
                  });
         return f;
     }

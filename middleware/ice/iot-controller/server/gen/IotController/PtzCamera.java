@@ -15,13 +15,21 @@
 
 package IotController;
 
-public interface Radio extends Device
+public interface PtzCamera extends Camera
 {
-    void setVolume(int vol, com.zeroc.Ice.Current current)
+    void zoomIn(com.zeroc.Ice.Current current)
         throws ArgumentException,
                InvalidOperationException;
 
-    void setFrequency(double freq, com.zeroc.Ice.Current current)
+    void zoomOut(com.zeroc.Ice.Current current)
+        throws ArgumentException,
+               InvalidOperationException;
+
+    void tilt(double angle, com.zeroc.Ice.Current current)
+        throws ArgumentException,
+               InvalidOperationException;
+
+    void pan(double angle, com.zeroc.Ice.Current current)
         throws ArgumentException,
                InvalidOperationException;
 
@@ -29,8 +37,9 @@ public interface Radio extends Device
     static final String[] _iceIds =
     {
         "::Ice::Object",
+        "::IotController::Camera",
         "::IotController::Device",
-        "::IotController::Radio"
+        "::IotController::PtzCamera"
     };
 
     @Override
@@ -47,7 +56,7 @@ public interface Radio extends Device
 
     static String ice_staticId()
     {
-        return "::IotController::Radio";
+        return "::IotController::PtzCamera";
     }
 
     /**
@@ -58,15 +67,12 @@ public interface Radio extends Device
      * @return -
      * @throws com.zeroc.Ice.UserException -
     **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setVolume(Radio obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_zoomIn(PtzCamera obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
         throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        com.zeroc.Ice.InputStream istr = inS.startReadParams();
-        int iceP_vol;
-        iceP_vol = istr.readInt();
-        inS.endReadParams();
-        obj.setVolume(iceP_vol, current);
+        inS.readEmptyParams();
+        obj.zoomIn(current);
         return inS.setResult(inS.writeEmptyParams());
     }
 
@@ -78,15 +84,52 @@ public interface Radio extends Device
      * @return -
      * @throws com.zeroc.Ice.UserException -
     **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setFrequency(Radio obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_zoomOut(PtzCamera obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+        throws com.zeroc.Ice.UserException
+    {
+        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
+        inS.readEmptyParams();
+        obj.zoomOut(current);
+        return inS.setResult(inS.writeEmptyParams());
+    }
+
+    /**
+     * @hidden
+     * @param obj -
+     * @param inS -
+     * @param current -
+     * @return -
+     * @throws com.zeroc.Ice.UserException -
+    **/
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_tilt(PtzCamera obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
         throws com.zeroc.Ice.UserException
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
         com.zeroc.Ice.InputStream istr = inS.startReadParams();
-        double iceP_freq;
-        iceP_freq = istr.readDouble();
+        double iceP_angle;
+        iceP_angle = istr.readDouble();
         inS.endReadParams();
-        obj.setFrequency(iceP_freq, current);
+        obj.tilt(iceP_angle, current);
+        return inS.setResult(inS.writeEmptyParams());
+    }
+
+    /**
+     * @hidden
+     * @param obj -
+     * @param inS -
+     * @param current -
+     * @return -
+     * @throws com.zeroc.Ice.UserException -
+    **/
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_pan(PtzCamera obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
+        throws com.zeroc.Ice.UserException
+    {
+        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
+        com.zeroc.Ice.InputStream istr = inS.startReadParams();
+        double iceP_angle;
+        iceP_angle = istr.readDouble();
+        inS.endReadParams();
+        obj.pan(iceP_angle, current);
         return inS.setResult(inS.writeEmptyParams());
     }
 
@@ -98,10 +141,13 @@ public interface Radio extends Device
         "ice_ids",
         "ice_isA",
         "ice_ping",
-        "setFrequency",
-        "setVolume",
+        "pan",
+        "takePicture",
+        "tilt",
         "turnOff",
-        "turnOn"
+        "turnOn",
+        "zoomIn",
+        "zoomOut"
     };
 
     /** @hidden */
@@ -139,19 +185,31 @@ public interface Radio extends Device
             }
             case 5:
             {
-                return _iceD_setFrequency(this, in, current);
+                return _iceD_pan(this, in, current);
             }
             case 6:
             {
-                return _iceD_setVolume(this, in, current);
+                return Camera._iceD_takePicture(this, in, current);
             }
             case 7:
             {
-                return Device._iceD_turnOff(this, in, current);
+                return _iceD_tilt(this, in, current);
             }
             case 8:
             {
+                return Device._iceD_turnOff(this, in, current);
+            }
+            case 9:
+            {
                 return Device._iceD_turnOn(this, in, current);
+            }
+            case 10:
+            {
+                return _iceD_zoomIn(this, in, current);
+            }
+            case 11:
+            {
+                return _iceD_zoomOut(this, in, current);
             }
         }
 

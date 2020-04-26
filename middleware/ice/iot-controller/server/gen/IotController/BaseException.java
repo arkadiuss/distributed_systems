@@ -15,40 +15,44 @@
 
 package IotController;
 
-public class ArgumentException extends BaseException
+public class BaseException extends com.zeroc.Ice.UserException
 {
-    public ArgumentException()
+    public BaseException()
     {
-        super();
+        this.message = "";
     }
 
-    public ArgumentException(Throwable cause)
+    public BaseException(Throwable cause)
     {
         super(cause);
+        this.message = "";
     }
 
-    public ArgumentException(String message)
+    public BaseException(String message)
     {
-        super(message);
+        this.message = message;
     }
 
-    public ArgumentException(String message, Throwable cause)
+    public BaseException(String message, Throwable cause)
     {
-        super(message, cause);
+        super(cause);
+        this.message = message;
     }
 
     public String ice_id()
     {
-        return "::IotController::ArgumentException";
+        return "::IotController::BaseException";
     }
+
+    public String message;
 
     /** @hidden */
     @Override
     protected void _writeImpl(com.zeroc.Ice.OutputStream ostr_)
     {
-        ostr_.startSlice("::IotController::ArgumentException", -1, false);
+        ostr_.startSlice("::IotController::BaseException", -1, true);
+        ostr_.writeString(message);
         ostr_.endSlice();
-        super._writeImpl(ostr_);
     }
 
     /** @hidden */
@@ -56,10 +60,10 @@ public class ArgumentException extends BaseException
     protected void _readImpl(com.zeroc.Ice.InputStream istr_)
     {
         istr_.startSlice();
+        message = istr_.readString();
         istr_.endSlice();
-        super._readImpl(istr_);
     }
 
     /** @hidden */
-    public static final long serialVersionUID = 6111158853894117901L;
+    public static final long serialVersionUID = -5708677676050549237L;
 }

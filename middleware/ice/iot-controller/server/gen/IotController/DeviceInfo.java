@@ -15,15 +15,8 @@
 
 package IotController;
 
-public class DeviceInfo implements java.lang.Cloneable,
-                                   java.io.Serializable
+public class DeviceInfo extends com.zeroc.Ice.Value
 {
-    public int id;
-
-    public String name;
-
-    public DeviceState state;
-
     public DeviceInfo()
     {
         this.name = "";
@@ -37,135 +30,50 @@ public class DeviceInfo implements java.lang.Cloneable,
         this.state = state;
     }
 
-    public boolean equals(java.lang.Object rhs)
-    {
-        if(this == rhs)
-        {
-            return true;
-        }
-        DeviceInfo r = null;
-        if(rhs instanceof DeviceInfo)
-        {
-            r = (DeviceInfo)rhs;
-        }
+    public int id;
 
-        if(r != null)
-        {
-            if(this.id != r.id)
-            {
-                return false;
-            }
-            if(this.name != r.name)
-            {
-                if(this.name == null || r.name == null || !this.name.equals(r.name))
-                {
-                    return false;
-                }
-            }
-            if(this.state != r.state)
-            {
-                if(this.state == null || r.state == null || !this.state.equals(r.state))
-                {
-                    return false;
-                }
-            }
+    public String name;
 
-            return true;
-        }
-
-        return false;
-    }
-
-    public int hashCode()
-    {
-        int h_ = 5381;
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, "::IotController::DeviceInfo");
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, id);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, name);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, state);
-        return h_;
-    }
+    public DeviceState state;
 
     public DeviceInfo clone()
     {
-        DeviceInfo c = null;
-        try
-        {
-            c = (DeviceInfo)super.clone();
-        }
-        catch(CloneNotSupportedException ex)
-        {
-            assert false; // impossible
-        }
-        return c;
+        return (DeviceInfo)super.clone();
     }
 
-    public void ice_writeMembers(com.zeroc.Ice.OutputStream ostr)
+    public static String ice_staticId()
     {
-        ostr.writeInt(this.id);
-        ostr.writeString(this.name);
-        DeviceState.ice_write(ostr, this.state);
+        return "::IotController::DeviceInfo";
     }
 
-    public void ice_readMembers(com.zeroc.Ice.InputStream istr)
+    @Override
+    public String ice_id()
     {
-        this.id = istr.readInt();
-        this.name = istr.readString();
-        this.state = DeviceState.ice_read(istr);
+        return ice_staticId();
     }
-
-    static public void ice_write(com.zeroc.Ice.OutputStream ostr, DeviceInfo v)
-    {
-        if(v == null)
-        {
-            _nullMarshalValue.ice_writeMembers(ostr);
-        }
-        else
-        {
-            v.ice_writeMembers(ostr);
-        }
-    }
-
-    static public DeviceInfo ice_read(com.zeroc.Ice.InputStream istr)
-    {
-        DeviceInfo v = new DeviceInfo();
-        v.ice_readMembers(istr);
-        return v;
-    }
-
-    static public void ice_write(com.zeroc.Ice.OutputStream ostr, int tag, java.util.Optional<DeviceInfo> v)
-    {
-        if(v != null && v.isPresent())
-        {
-            ice_write(ostr, tag, v.get());
-        }
-    }
-
-    static public void ice_write(com.zeroc.Ice.OutputStream ostr, int tag, DeviceInfo v)
-    {
-        if(ostr.writeOptional(tag, com.zeroc.Ice.OptionalFormat.FSize))
-        {
-            int pos = ostr.startSize();
-            ice_write(ostr, v);
-            ostr.endSize(pos);
-        }
-    }
-
-    static public java.util.Optional<DeviceInfo> ice_read(com.zeroc.Ice.InputStream istr, int tag)
-    {
-        if(istr.readOptional(tag, com.zeroc.Ice.OptionalFormat.FSize))
-        {
-            istr.skip(4);
-            return java.util.Optional.of(DeviceInfo.ice_read(istr));
-        }
-        else
-        {
-            return java.util.Optional.empty();
-        }
-    }
-
-    private static final DeviceInfo _nullMarshalValue = new DeviceInfo();
 
     /** @hidden */
-    public static final long serialVersionUID = 1401634630227386313L;
+    public static final long serialVersionUID = 6579180557829939283L;
+
+    /** @hidden */
+    @Override
+    protected void _iceWriteImpl(com.zeroc.Ice.OutputStream ostr_)
+    {
+        ostr_.startSlice(ice_staticId(), -1, true);
+        ostr_.writeInt(id);
+        ostr_.writeString(name);
+        DeviceState.ice_write(ostr_, state);
+        ostr_.endSlice();
+    }
+
+    /** @hidden */
+    @Override
+    protected void _iceReadImpl(com.zeroc.Ice.InputStream istr_)
+    {
+        istr_.startSlice();
+        id = istr_.readInt();
+        name = istr_.readString();
+        state = DeviceState.ice_read(istr_);
+        istr_.endSlice();
+    }
 }

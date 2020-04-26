@@ -15,22 +15,17 @@
 
 package IotController;
 
-public interface Radio extends Device
+public interface AICamera extends Camera
 {
-    void setVolume(int vol, com.zeroc.Ice.Current current)
-        throws ArgumentException,
-               InvalidOperationException;
-
-    void setFrequency(double freq, com.zeroc.Ice.Current current)
-        throws ArgumentException,
-               InvalidOperationException;
+    boolean detectCats(com.zeroc.Ice.Current current);
 
     /** @hidden */
     static final String[] _iceIds =
     {
         "::Ice::Object",
-        "::IotController::Device",
-        "::IotController::Radio"
+        "::IotController::AICamera",
+        "::IotController::Camera",
+        "::IotController::Device"
     };
 
     @Override
@@ -47,7 +42,7 @@ public interface Radio extends Device
 
     static String ice_staticId()
     {
-        return "::IotController::Radio";
+        return "::IotController::AICamera";
     }
 
     /**
@@ -56,50 +51,28 @@ public interface Radio extends Device
      * @param inS -
      * @param current -
      * @return -
-     * @throws com.zeroc.Ice.UserException -
     **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setVolume(Radio obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
-        throws com.zeroc.Ice.UserException
+    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_detectCats(AICamera obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        com.zeroc.Ice.InputStream istr = inS.startReadParams();
-        int iceP_vol;
-        iceP_vol = istr.readInt();
-        inS.endReadParams();
-        obj.setVolume(iceP_vol, current);
-        return inS.setResult(inS.writeEmptyParams());
-    }
-
-    /**
-     * @hidden
-     * @param obj -
-     * @param inS -
-     * @param current -
-     * @return -
-     * @throws com.zeroc.Ice.UserException -
-    **/
-    static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_setFrequency(Radio obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
-        throws com.zeroc.Ice.UserException
-    {
-        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
-        com.zeroc.Ice.InputStream istr = inS.startReadParams();
-        double iceP_freq;
-        iceP_freq = istr.readDouble();
-        inS.endReadParams();
-        obj.setFrequency(iceP_freq, current);
-        return inS.setResult(inS.writeEmptyParams());
+        inS.readEmptyParams();
+        boolean ret = obj.detectCats(current);
+        com.zeroc.Ice.OutputStream ostr = inS.startWriteParams();
+        ostr.writeBool(ret);
+        inS.endWriteParams(ostr);
+        return inS.setResult(ostr);
     }
 
     /** @hidden */
     final static String[] _iceOps =
     {
+        "detectCats",
         "getInfo",
         "ice_id",
         "ice_ids",
         "ice_isA",
         "ice_ping",
-        "setFrequency",
-        "setVolume",
+        "takePicture",
         "turnOff",
         "turnOn"
     };
@@ -119,31 +92,31 @@ public interface Radio extends Device
         {
             case 0:
             {
-                return Device._iceD_getInfo(this, in, current);
+                return _iceD_detectCats(this, in, current);
             }
             case 1:
             {
-                return com.zeroc.Ice.Object._iceD_ice_id(this, in, current);
+                return Device._iceD_getInfo(this, in, current);
             }
             case 2:
             {
-                return com.zeroc.Ice.Object._iceD_ice_ids(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_id(this, in, current);
             }
             case 3:
             {
-                return com.zeroc.Ice.Object._iceD_ice_isA(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_ids(this, in, current);
             }
             case 4:
             {
-                return com.zeroc.Ice.Object._iceD_ice_ping(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_isA(this, in, current);
             }
             case 5:
             {
-                return _iceD_setFrequency(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_ping(this, in, current);
             }
             case 6:
             {
-                return _iceD_setVolume(this, in, current);
+                return Camera._iceD_takePicture(this, in, current);
             }
             case 7:
             {

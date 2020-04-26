@@ -31,7 +31,7 @@ func (b * ExpBackoff) reset() {
 }
 
 func inputListWithPrompt(name string, prompts []string) []string {
-	fmt.Printf("%s (%s, all, none):\n", name, strings.Join(prompts, ","))
+	fmt.Printf("%s (%s):\n", name, strings.Join(prompts, ","))
 	var valsText string
 	fmt.Scanf("%s", &valsText)
 	if valsText == "all" {

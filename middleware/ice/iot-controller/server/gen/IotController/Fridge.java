@@ -18,7 +18,8 @@ package IotController;
 public interface Fridge extends Device
 {
     void setTemp(double temp, com.zeroc.Ice.Current current)
-        throws ArgumentException;
+        throws ArgumentException,
+               InvalidOperationException;
 
     /** @hidden */
     static final String[] _iceIds =

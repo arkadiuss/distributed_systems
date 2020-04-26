@@ -15,38 +15,38 @@
 
 package IotController;
 
-public class ArgumentException extends BaseException
+public class InvalidOperationException extends BaseException
 {
-    public ArgumentException()
+    public InvalidOperationException()
     {
         super();
     }
 
-    public ArgumentException(Throwable cause)
+    public InvalidOperationException(Throwable cause)
     {
         super(cause);
     }
 
-    public ArgumentException(String message)
+    public InvalidOperationException(String message)
     {
         super(message);
     }
 
-    public ArgumentException(String message, Throwable cause)
+    public InvalidOperationException(String message, Throwable cause)
     {
         super(message, cause);
     }
 
     public String ice_id()
     {
-        return "::IotController::ArgumentException";
+        return "::IotController::InvalidOperationException";
     }
 
     /** @hidden */
     @Override
     protected void _writeImpl(com.zeroc.Ice.OutputStream ostr_)
     {
-        ostr_.startSlice("::IotController::ArgumentException", -1, false);
+        ostr_.startSlice("::IotController::InvalidOperationException", -1, false);
         ostr_.endSlice();
         super._writeImpl(ostr_);
     }
@@ -61,5 +61,5 @@ public class ArgumentException extends BaseException
     }
 
     /** @hidden */
-    public static final long serialVersionUID = 6111158853894117901L;
+    public static final long serialVersionUID = -5014628192204364806L;
 }
