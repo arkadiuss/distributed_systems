@@ -8,6 +8,8 @@ import kotlin.random.Random
 class AICameraI(
     deviceInfo: DeviceInfo
 ) : CameraI(deviceInfo), AICamera {
+
+    @Synchronized
     override fun detectCats(current: Current?): Boolean {
         return Random.nextBoolean()
     }

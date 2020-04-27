@@ -12,6 +12,7 @@ class SmartFridgeI(
 ) : FridgeI(fridgeInfo), SmartFridge {
     private val recipes = mutableMapOf<String, List<Item>>()
 
+    @Synchronized
     override fun whatINeedFor(name: String?, current: Current?): Array<Item> {
         if(!recipes.containsKey(name))
             throw ArgumentException("No such recipe")
@@ -29,12 +30,13 @@ class SmartFridgeI(
             ?.toTypedArray() ?: throw ArgumentException()
     }
 
+    @Synchronized
     override fun addRecipe(name: String?, ingredients: Array<out Item>?, current: Current?) {
-        println("$name, $ingredients")
         if(name != null && ingredients != null)
             recipes[name] = ingredients.toList()
     }
 
+    @Synchronized
     override fun getCurrentItems(current: Current?): Array<Item> {
         return initialItems.toTypedArray()
     }

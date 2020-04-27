@@ -68,7 +68,6 @@ func dataInput(availableCities []string, availableFactors []string) *ws.Subscrib
 	var factors []*ws.Factor
 	fmt.Printf("How many factors you want?\n")
 	fmt.Scanf("%d", &factorsCount)
-	println(factorsCount)
 	for i := 0; i < factorsCount; i++ {
 		factors = append(factors, inputFactor(availableFactors))
 	}

@@ -8,9 +8,7 @@ class Server {
 
             adapter.addServantLocator(DevicesLocator(), "devices")
             adapter.activate()
-
-            println("Activated")
-
+            println("Ready.")
             it.waitForShutdown()
         }
     }

@@ -1,5 +1,6 @@
 import io.grpc.ServerBuilder
 import java.io.IOException
+import java.util.concurrent.Executors
 import java.util.logging.Logger
 
 class Server {
@@ -21,7 +22,7 @@ class Server {
                 System.err.println("*** server shut down")
             }
         })
-        weatherService.generateEvents()
+        Executors.newFixedThreadPool(1).submit { weatherService.generateEvents() }
     }
 
     private fun stop() {

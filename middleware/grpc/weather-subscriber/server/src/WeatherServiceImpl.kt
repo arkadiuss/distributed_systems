@@ -1,3 +1,5 @@
+import com.google.common.collect.Lists
+import com.google.common.collect.Lists.newCopyOnWriteArrayList
 import io.grpc.StatusRuntimeException
 import io.grpc.stub.StreamObserver
 import kotlin.random.Random
@@ -5,7 +7,7 @@ import kotlin.random.Random
 typealias Observer = (String, String, Int, String) -> Unit
 
 class WeatherServiceImpl : WeatherServiceGrpc.WeatherServiceImplBase() {
-    private var observers: MutableList<Observer> = mutableListOf()
+    private var observers: MutableList<Observer> = newCopyOnWriteArrayList()
 
     private val cities = listOf("warszawa", "krakow", "bielsko","toronto", "la")
     private val factors = listOf("temp", "wind", "humidity")

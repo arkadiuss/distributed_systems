@@ -8,6 +8,7 @@ class RadioI(
     private val radioInfo: RadioInfo
 ): Radio, DeviceI(radioInfo) {
 
+    @Synchronized
     override fun setFrequency(freq: Double, current: Current?) {
         if(radioInfo.state == DeviceState.OFF)
             throw InvalidOperationException("How do you want to set frequency on turned off radio?")
@@ -16,6 +17,7 @@ class RadioI(
         radioInfo.frequency = freq
     }
 
+    @Synchronized
     override fun setVolume(vol: Int, current: Current?) {
         if(radioInfo.state == DeviceState.OFF)
             throw InvalidOperationException("How do you want to set volume on turned off radio?")

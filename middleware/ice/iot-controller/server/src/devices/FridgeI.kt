@@ -10,8 +10,10 @@ open class FridgeI(
     private val fridgeInfo: FridgeInfo
 ) : DeviceI(fridgeInfo), Fridge {
 
+    @Synchronized
     override fun getInfo(current: Current?): DeviceInfo = fridgeInfo
 
+    @Synchronized
     override fun setTemp(temp: Double, current: Current?) {
         fridgeInfo.temp = temp
     }
