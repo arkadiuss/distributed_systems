@@ -1,3 +1,4 @@
 *.tar.gz
 apache-zookeeper-3.6.1-bin/
 !apache-zookeeper-3.6.1-bin/conf
+data/
