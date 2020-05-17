@@ -4,12 +4,10 @@ import org.apache.zookeeper.AddWatchMode
 import org.apache.zookeeper.WatchedEvent
 import org.apache.zookeeper.Watcher
 import org.apache.zookeeper.ZooKeeper
-import java.io.BufferedReader
-import java.io.File
 import java.io.InputStream
-import java.io.InputStreamReader
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 import java.util.concurrent.locks.ReentrantLock
-
 
 class Executor(
         private val execPath: String
@@ -20,13 +18,16 @@ class Executor(
     private var isRunning = true
     private val nodePath = "/z"
     private var executedProcess: Process? = null
+    private val threadPool: ExecutorService = Executors.newFixedThreadPool(4)
 
     init {
         zooKeeper.addWatch(nodePath, AddWatchMode.PERSISTENT_RECURSIVE)
+        val treePrinter = TreePrinter(nodePath, zooKeeper)
+        val userInputReader = UserInputReader(treePrinter)
+        threadPool.execute(userInputReader)
     }
 
     private fun processEvent(event: WatchedEvent) {
-        println(event)
         when {
             event.type == Watcher.Event.EventType.None -> {
                 if(event.state == Watcher.Event.KeeperState.Expired) {
@@ -34,10 +35,9 @@ class Executor(
                 }
             }
             event.type == Watcher.Event.EventType.NodeCreated && event.path == nodePath -> {
-                executedProcess = Runtime.getRuntime().exec(File(execPath).absolutePath)
-                readStream("stdin", executedProcess?.inputStream)
-                readStream("stderr", executedProcess?.errorStream)
-                println(executedProcess?.pid())
+                executedProcess = Runtime.getRuntime().exec(execPath)
+                readStream("in", executedProcess?.inputStream)
+                readStream("err", executedProcess?.errorStream)
             }
             event.type == Watcher.Event.EventType.NodeDeleted && event.path == nodePath -> {
                 executedProcess?.destroy()
@@ -49,14 +49,9 @@ class Executor(
     }
 
     private fun readStream(name: String, stream: InputStream?) {
-        Thread(Runnable {
-            val br = BufferedReader(InputStreamReader(stream))
-            while (true) {
-                val s = br.readLine() ?: break
-                println("[$name] $s")
-            }
-        }).start()
-        println("AFTER START")
+        stream?.let {
+            threadPool.submit(ProgramInputReader(name, it))
+        }
     }
 
     fun run(){
@@ -65,6 +60,7 @@ class Executor(
             runningCondition.await()
         }
         lock.unlock()
+        threadPool.shutdownNow()
     }
 
     private fun terminate() {
