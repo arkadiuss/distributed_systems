@@ -41,6 +41,8 @@ object PriceComparerApp {
     while(true) {
       val line = readLine()
       systemRef ! InputCommand(line)
+//      systemRef ! InputCommand("1 test"+Random.between(1,22))
+//      Thread.sleep(Random.between(10,50))
     }
   }
 }

@@ -4,15 +4,15 @@ import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
 
 sealed trait ClientCommand
 case class SearchCommand(productName: String) extends ClientCommand
-case class ProductsResponse(products: Seq[Int]) extends ClientCommand
+case class ProductsResponse(products: Seq[Int], occurrences: Int) extends ClientCommand
 
 class Client(server: ActorRef[ServerCommand], context: ActorContext[ClientCommand]) extends AbstractBehavior[ClientCommand](context){
   override def onMessage(msg: ClientCommand): Behavior[ClientCommand] = {
     msg match {
       case SearchCommand(productName: String) => 
         server ! SearchProduct(productName, context.self)
-      case ProductsResponse(products: Seq[Int]) =>
-        println("Response received", products)
+      case ProductsResponse(products: Seq[Int], occurrences: Int) =>
+        println("Response received", products, occurrences)
     }
     Behaviors.same
   }
