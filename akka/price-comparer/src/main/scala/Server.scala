@@ -6,22 +6,28 @@ import akka.stream.scaladsl.{Sink, Source}
 
 import scala.collection.mutable
 import scala.concurrent.duration._
-import scala.util.{Failure, Random, Success, Try}
+import scala.util.{Failure, Random, Success}
+import akka.actor.typed.scaladsl.AskPattern._
+import akka.util.Timeout
 
 sealed trait ServerCommand
 case class SearchProduct(name: String, client: ActorRef[ProductsResponse]) extends ServerCommand
 case class Occurrences(query: String, occurrences: Int, requestId: Int) extends ServerCommand
+case class SearchProductReviews(query: String, client: ActorRef[ReviewResponse]) extends ServerCommand
+case class ProductsReviews(query: String, reviews: String) extends ServerCommand
 
 class OccurrencesRequest(val prices: Seq[Int], val client: ActorRef[ProductsResponse])
 
 class Server(context: ActorContext[ServerCommand]) extends AbstractBehavior[ServerCommand](context){
   implicit val sys = context.system
   implicit val exec = sys.executionContext
+  implicit val timeout = Timeout(10.seconds)
 
   val dbManagerActor: ActorRef[DbCommand] = context.spawn[DbCommand](DbManager(), "db-manager")
-  val httpServer = context.spawn[Nothing](HttpServer(), "http-server")
+  val httpServer = context.spawn[ClientCommand](HttpServer(context.self), "http-server")
   var requestId = 1
   val requests = new mutable.HashMap[Int, OccurrencesRequest]()
+  var opineoClientsId = 1
 
   override def onMessage(msg: ServerCommand): Behavior[ServerCommand] = {
     msg match {
@@ -31,6 +37,16 @@ class Server(context: ActorContext[ServerCommand]) extends AbstractBehavior[Serv
           case Some(req) => req.client ! ProductsResponse(req.prices, occurrences)
           case None => println(s"No request for id $requestId")
         }
+        Behaviors.same
+      }
+      case SearchProductReviews(query, client) => {
+        val opineoClient = context.spawn[OpineoCommands](OpineoClient(), s"opineo-client-$opineoClientsId")
+        opineoClientsId += 1
+        opineoClient.ask[ProductsReviews](ref => ReviewQuery(query, ref)).onComplete{
+          case Success(value) => client ! ReviewResponse(value.reviews)
+          case Failure(exception) => println(exception)
+        }
+
         Behaviors.same
       }
     }

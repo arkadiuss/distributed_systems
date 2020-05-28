@@ -13,5 +13,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick-hikaricp" % "3.3.2",
   "com.lightbend.akka" %% "akka-stream-alpakka-slick" % "2.0.0",
   "org.xerial" % "sqlite-jdbc" % "3.31.1",
-  "com.typesafe.akka" %% "akka-http"   % "10.1.12"
+  "com.typesafe.akka" %% "akka-http"   % "10.1.12",
+  "com.typesafe.akka" %% "akka-http-spray-json" % "10.1.12",
+  "org.jsoup" % "jsoup" % "1.13.1"
 )
