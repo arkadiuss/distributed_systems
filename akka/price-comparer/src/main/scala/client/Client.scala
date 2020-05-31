@@ -1,6 +1,8 @@
-import akka.actor.typed.ActorRef
-import akka.actor.typed.Behavior
+package client
+
 import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
+import akka.actor.typed.{ActorRef, Behavior}
+import server.{SearchProduct, ServerCommand}
 
 sealed trait ClientCommand
 case class SearchCommand(productName: String) extends ClientCommand

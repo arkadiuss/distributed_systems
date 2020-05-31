@@ -1,8 +1,11 @@
-import akka.actor.typed.{ActorRef, Behavior}
+package server.db
+
 import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
+import akka.actor.typed.{ActorRef, Behavior}
 import akka.stream.alpakka.slick.javadsl.SlickSession
 import akka.stream.alpakka.slick.scaladsl.Slick
 import akka.stream.scaladsl.{Sink, Source}
+import server.Occurrences
 import slick.jdbc.SQLiteProfile.api._
 
 import scala.util.{Failure, Success}
@@ -26,7 +29,7 @@ class DbManager(context: ActorContext[DbCommand]) extends AbstractBehavior[DbCom
       case ReadQueriesOccurrences(query, requestId, replyTo) => {
         readOccurrences(query).onComplete {
           case Success(occ) => returnOccurrences(query, occ, requestId, replyTo)
-          case Failure(exception) => println(s"Cannot read: $exception")
+          case Failure(exception) => context.log.error(s"Cannot read: $exception")
         }
       }
       case AddAndReadQueryOccurrences(query, requestId, replyTo) => {
@@ -34,7 +37,7 @@ class DbManager(context: ActorContext[DbCommand]) extends AbstractBehavior[DbCom
           readOccurrences(query)
         }.onComplete {
           case Success(occ) => returnOccurrences(query, occ, requestId, replyTo)
-          case Failure(exception) => println(s"Unable to complete command: $exception")
+          case Failure(exception) => context.log.error(s"Unable to complete command: $exception")
         }
       }
     }

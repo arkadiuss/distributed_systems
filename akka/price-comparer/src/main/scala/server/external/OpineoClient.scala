@@ -1,10 +1,13 @@
-import akka.actor.typed.{ActorRef, Behavior}
+package server.external
+
+import akka.actor.typed.scaladsl.adapter._
 import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
+import akka.actor.typed.{ActorRef, Behavior}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.HttpRequest
-import akka.actor.typed.scaladsl.adapter._
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import org.jsoup.Jsoup
+import server.ProductsReviews
 
 import scala.util.{Failure, Success}
 
