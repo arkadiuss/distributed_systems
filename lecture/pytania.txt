@@ -1,2 +1,0 @@
-1. Dlaczego możemy w CORBIE zrobić coś bez IDRa? 
-dlatego że możemy wykorzystać refleksje, i introspekcji i to zastępuje IDR (interface definition repositorium) z RMI
